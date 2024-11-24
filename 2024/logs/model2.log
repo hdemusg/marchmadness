@@ -1,0 +1,33 @@
+INFO:brackets:Now using decision tree regression on the 2024 bracket!
+INFO:brackets:Year                 2024
+Round        Championship
+Seed 1                4.0
+Seed 2                4.0
+Team 1             Auburn
+Team 2               Duke
+Offense 1            83.3
+Offense 2            79.8
+Defense 1            68.0
+Defense 2            67.4
+Win Pct 1            79.4
+Win Pct 2            75.0
+Score 1              88.0
+Score 2              81.0
+Winner             Auburn
+Name: 66, dtype: object
+INFO:brackets:Year                 2024
+Round        Championship
+Seed 1                4.0
+Seed 2                4.0
+Team 1             Auburn
+Team 2               Duke
+Offense 1            83.3
+Offense 2            79.8
+Defense 1            68.0
+Defense 2            67.4
+Win Pct 1            79.4
+Win Pct 2            75.0
+Score 1              88.0
+Score 2              81.0
+Winner             Auburn
+Name: 66, dtype: object

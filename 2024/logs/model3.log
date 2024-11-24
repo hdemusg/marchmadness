@@ -1,0 +1,43 @@
+INFO:brackets:Run 1
+INFO:brackets:Run 2
+INFO:brackets:Run 3
+INFO:brackets:Run 4
+INFO:brackets:Run 5
+INFO:brackets:SGD Regressor average accuracy: 0.5687572763154158
+INFO:brackets:K Neighbors Regressor average accuracy: 0.5735166964818127
+INFO:brackets:Decision Tree Regressor average accuracy: 0.422221157395576
+INFO:brackets:Lasso Regressor average accuracy: 0.4521204247948433
+INFO:brackets:Now using k neighbors regression on the 2024 bracket!
+INFO:brackets:neighbors: 5
+INFO:brackets:Year                 2024
+Round        Championship
+Seed 1                5.0
+Seed 2                2.0
+Team 1       Saint Mary’s
+Team 2          Tennessee
+Offense 1            74.2
+Offense 2            79.5
+Defense 1            58.7
+Defense 2            67.9
+Win Pct 1            78.8
+Win Pct 2            75.0
+Score 1              62.0
+Score 2              64.0
+Winner          Tennessee
+Name: 66, dtype: object
+INFO:brackets:Year                 2024
+Round        Championship
+Seed 1                5.0
+Seed 2                2.0
+Team 1       Saint Mary’s
+Team 2          Tennessee
+Offense 1            74.2
+Offense 2            79.5
+Defense 1            58.7
+Defense 2            67.9
+Win Pct 1            78.8
+Win Pct 2            75.0
+Score 1              62.0
+Score 2              64.0
+Winner          Tennessee
+Name: 66, dtype: object

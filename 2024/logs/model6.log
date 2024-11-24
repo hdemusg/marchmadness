@@ -1,0 +1,94 @@
+INFO:brackets:Run 1
+INFO:brackets:Run 2
+INFO:brackets:Run 3
+INFO:brackets:Run 4
+INFO:brackets:Run 5
+INFO:brackets:K Neighbors Regressor average accuracy: 0.5082254304721865
+INFO:brackets:Decision Tree Regressor average accuracy: 0.3761839423957474
+INFO:brackets:Lasso Regressor average accuracy: 0.6634020960084893
+INFO:brackets:Random Forest average accuracy: 0.3761839423957474
+INFO:brackets:Now using lasso regression on the 2024 bracket!
+INFO:brackets:alpha: 1
+INFO:brackets:Year                 2024
+Round        Championship
+Seed 1                1.0
+Seed 2                1.0
+Team 1              UConn
+Team 2             Purdue
+Offense 1            81.5
+Offense 2            83.4
+Defense 1            64.4
+Defense 2            70.1
+Win Pct 1            91.2
+Win Pct 2            87.9
+3P 1                  NaN
+3P 2                  NaN
+Score 1              75.0
+Score 2              73.0
+Winner              UConn
+Name: 66, dtype: object
+INFO:brackets:Year                 2024
+Round        Championship
+Seed 1                1.0
+Seed 2                1.0
+Team 1              UConn
+Team 2             Purdue
+Offense 1            81.5
+Offense 2            83.4
+Defense 1            64.4
+Defense 2            70.1
+Win Pct 1            91.2
+Win Pct 2            87.9
+3P 1                  NaN
+3P 2                  NaN
+Score 1              75.0
+Score 2              73.0
+Winner              UConn
+Name: 66, dtype: object
+INFO:brackets:Run 1
+INFO:brackets:Run 2
+INFO:brackets:Run 3
+INFO:brackets:Run 4
+INFO:brackets:Run 5
+INFO:brackets:K Neighbors Regressor average accuracy: 0.395718757054332
+INFO:brackets:Decision Tree Regressor average accuracy: 0.407731946946721
+INFO:brackets:Lasso Regressor average accuracy: 0.4861244101745973
+INFO:brackets:Random Forest average accuracy: 0.407731946946721
+INFO:brackets:Now using lasso regression on the 2024 bracket!
+INFO:brackets:alpha: 1
+INFO:brackets:Year                 2024
+Round        Championship
+Seed 1                1.0
+Seed 2                1.0
+Team 1              UConn
+Team 2             Purdue
+Offense 1            81.5
+Offense 2            83.4
+Defense 1            64.4
+Defense 2            70.1
+Win Pct 1            91.2
+Win Pct 2            87.9
+3P 1                 36.7
+3P 2                 40.8
+Score 1              76.0
+Score 2              74.0
+Winner              UConn
+Name: 66, dtype: object
+INFO:brackets:Year                 2024
+Round        Championship
+Seed 1                1.0
+Seed 2                1.0
+Team 1              UConn
+Team 2             Purdue
+Offense 1            81.5
+Offense 2            83.4
+Defense 1            64.4
+Defense 2            70.1
+Win Pct 1            91.2
+Win Pct 2            87.9
+3P 1                 36.7
+3P 2                 40.8
+Score 1              76.0
+Score 2              74.0
+Winner              UConn
+Name: 66, dtype: object

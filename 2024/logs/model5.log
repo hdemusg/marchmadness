@@ -1,0 +1,47 @@
+INFO:brackets:Run 1
+INFO:brackets:Run 2
+INFO:brackets:Run 3
+INFO:brackets:Run 4
+INFO:brackets:Run 5
+INFO:brackets:SGD Regressor average accuracy: 0.6116351670010207
+INFO:brackets:K Neighbors Regressor average accuracy: 0.603074296976736
+INFO:brackets:Decision Tree Regressor average accuracy: 0.5216587477563087
+INFO:brackets:Lasso Regressor average accuracy: 0.4897824939288354
+INFO:brackets:Now using SGD regression on the 2024 bracket!
+INFO:brackets:alpha: 0.1
+INFO:brackets:Year                     2024
+Round            Championship
+Seed 1                    1.0
+Seed 2                    1.0
+Team 1                  UConn
+Team 2                Houston
+Offense 1                81.5
+Offense 2                73.0
+Defense 1                64.4
+Defense 2                57.0
+Win Pct 1                91.2
+Win Pct 2                88.2
+3P 1                      NaN
+3P 2                      NaN
+Score 1      28574420886828.0
+Score 2     -12533590638999.0
+Winner                  UConn
+Name: 66, dtype: object
+INFO:brackets:Year                     2024
+Round            Championship
+Seed 1                    1.0
+Seed 2                    1.0
+Team 1                  UConn
+Team 2                Houston
+Offense 1                81.5
+Offense 2                73.0
+Defense 1                64.4
+Defense 2                57.0
+Win Pct 1                91.2
+Win Pct 2                88.2
+3P 1                      NaN
+3P 2                      NaN
+Score 1      28574420886828.0
+Score 2     -12533590638999.0
+Winner                  UConn
+Name: 66, dtype: object
