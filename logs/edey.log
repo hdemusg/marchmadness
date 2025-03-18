@@ -1,0 +1,118 @@
+2025-03-17 23:12:18,841 - __main__ - INFO - Run 1
+2025-03-17 23:12:19,081 - __main__ - INFO - Run 2
+2025-03-17 23:12:19,317 - __main__ - INFO - Run 3
+2025-03-17 23:12:19,552 - __main__ - INFO - Run 4
+2025-03-17 23:12:19,778 - __main__ - INFO - Run 5
+2025-03-17 23:12:20,003 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.6399999999999999
+2025-03-17 23:12:20,003 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.52
+2025-03-17 23:12:20,003 - __main__ - INFO - Lasso Regressor average accuracy: 0.5933333333333333
+2025-03-17 23:12:20,003 - __main__ - INFO - Random Forest average accuracy: 0.52
+2025-03-17 23:12:20,003 - __main__ - INFO - Now using k neighbors regression on the 2024 bracket!
+2025-03-17 23:12:20,003 - __main__ - INFO - neighbors: 6
+2025-03-17 23:12:20,170 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                      15.0
+Seed 2                      15.0
+Team 1                     Omaha
+Team 2                   Wofford
+GP 1                        29.0
+GP 2                        39.0
+Points 1                  3018.0
+Points 2                  2932.0
+Points Allowed 1          2906.0
+Points Allowed 2          2709.0
+Offense 1                  104.1
+Offense 2                   75.2
+Defense 1                  100.2
+Defense 2                   69.5
+Win Pct 1                   64.7
+Win Pct 2                   55.9
+3P 1                        36.7
+3P 2                        34.1
+Score 1                     77.0
+Score 2                     79.0
+Winner                   Wofford
+Name: 66, dtype: object
+2025-03-17 23:12:20,172 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                      15.0
+Seed 2                      15.0
+Team 1                     Omaha
+Team 2                   Wofford
+GP 1                        29.0
+GP 2                        39.0
+Points 1                  3018.0
+Points 2                  2932.0
+Points Allowed 1          2906.0
+Points Allowed 2          2709.0
+Offense 1                  104.1
+Offense 2                   75.2
+Defense 1                  100.2
+Defense 2                   69.5
+Win Pct 1                   64.7
+Win Pct 2                   55.9
+3P 1                        36.7
+3P 2                        34.1
+Score 1                     77.0
+Score 2                     79.0
+Winner                   Wofford
+Name: 66, dtype: object
+2025-03-17 23:18:45,767 - __main__ - INFO - Run 1
+2025-03-17 23:18:46,006 - __main__ - INFO - Run 2
+2025-03-17 23:18:46,238 - __main__ - INFO - Run 3
+2025-03-17 23:18:46,468 - __main__ - INFO - Run 4
+2025-03-17 23:18:46,694 - __main__ - INFO - Run 5
+2025-03-17 23:18:46,916 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.7
+2025-03-17 23:18:46,916 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.5533333333333333
+2025-03-17 23:18:46,916 - __main__ - INFO - Lasso Regressor average accuracy: 0.7133333333333333
+2025-03-17 23:18:46,916 - __main__ - INFO - Random Forest average accuracy: 0.5533333333333333
+2025-03-17 23:18:46,916 - __main__ - INFO - Now using lasso regression on the 2024 bracket!
+2025-03-17 23:18:46,916 - __main__ - INFO - alpha: 1
+2025-03-17 23:18:47,064 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                    Auburn
+Team 2                      Duke
+GP 1                        38.0
+GP 2                        39.0
+Points 1                  3192.0
+Points 2                  3221.0
+Points Allowed 1          2592.0
+Points Allowed 2          2371.0
+Offense 1                   84.0
+Offense 2                   82.6
+Defense 1                   68.2
+Defense 2                   60.8
+Win Pct 1                   84.8
+Win Pct 2                   91.2
+3P 1                        36.8
+3P 2                        37.7
+Score 1                     79.0
+Score 2                     57.0
+Winner                    Auburn
+Name: 66, dtype: object
+2025-03-17 23:18:47,066 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                    Auburn
+Team 2                      Duke
+GP 1                        38.0
+GP 2                        39.0
+Points 1                  3192.0
+Points 2                  3221.0
+Points Allowed 1          2592.0
+Points Allowed 2          2371.0
+Offense 1                   84.0
+Offense 2                   82.6
+Defense 1                   68.2
+Defense 2                   60.8
+Win Pct 1                   84.8
+Win Pct 2                   91.2
+3P 1                        36.8
+3P 2                        37.7
+Score 1                     79.0
+Score 2                     57.0
+Winner                    Auburn
+Name: 66, dtype: object

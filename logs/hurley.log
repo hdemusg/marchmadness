@@ -1,0 +1,47 @@
+2025-03-17 01:35:30,000 - __main__ - INFO - Run 1
+2025-03-17 01:35:30,237 - __main__ - INFO - Run 2
+2025-03-17 01:35:30,471 - __main__ - INFO - Run 3
+2025-03-17 01:35:30,699 - __main__ - INFO - Run 4
+2025-03-17 01:35:30,927 - __main__ - INFO - Run 5
+2025-03-17 01:35:31,152 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.5611423376532836
+2025-03-17 01:35:31,152 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.6060875433677254
+2025-03-17 01:35:31,152 - __main__ - INFO - Lasso Regressor average accuracy: 0.7024197960563479
+2025-03-17 01:35:31,152 - __main__ - INFO - Random Forest average accuracy: 0.6060875433677254
+2025-03-17 01:35:31,152 - __main__ - INFO - Now using lasso regression on the 2024 bracket!
+2025-03-17 01:35:31,152 - __main__ - INFO - alpha: 1
+2025-03-17 01:35:31,283 - __main__ - INFO - Year                 2025
+Round        Championship
+Seed 1                1.0
+Seed 2                1.0
+Team 1             Auburn
+Team 2               Duke
+Offense 1            83.8
+Offense 2            82.7
+Defense 1            69.6
+Defense 2            61.9
+Win Pct 1            84.8
+Win Pct 2            91.2
+3P 1                 36.8
+3P 2                 37.7
+Score 1              65.0
+Score 2              52.0
+Winner             Auburn
+Name: 66, dtype: object
+2025-03-17 01:35:31,285 - __main__ - INFO - Year                 2025
+Round        Championship
+Seed 1                1.0
+Seed 2                1.0
+Team 1             Auburn
+Team 2               Duke
+Offense 1            83.8
+Offense 2            82.7
+Defense 1            69.6
+Defense 2            61.9
+Win Pct 1            84.8
+Win Pct 2            91.2
+3P 1                 36.8
+3P 2                 37.7
+Score 1              65.0
+Score 2              52.0
+Winner             Auburn
+Name: 66, dtype: object
