@@ -1,0 +1,64 @@
+2025-03-19 19:45:01,238 - __main__ - INFO - Run 1
+2025-03-19 19:45:01,426 - __main__ - INFO - Run 2
+2025-03-19 19:45:01,605 - __main__ - INFO - Run 3
+2025-03-19 19:45:01,788 - __main__ - INFO - Run 4
+2025-03-19 19:45:01,968 - __main__ - INFO - Run 5
+2025-03-19 19:45:02,147 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.6245530835746365
+2025-03-19 19:45:02,147 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.5343929219219784
+2025-03-19 19:45:02,147 - __main__ - INFO - Lasso Regressor average accuracy: 0.5499755864340055
+2025-03-19 19:45:02,147 - __main__ - INFO - Random Forest average accuracy: 0.5343929219219784
+2025-03-19 19:45:02,147 - __main__ - INFO - Now using k neighbors regression on the 2024 bracket!
+2025-03-19 19:45:02,147 - __main__ - INFO - neighbors: 2
+2025-03-19 19:45:02,286 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                   Florida
+Team 2                   Houston
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                         9.3
+Points 1                  3300.0
+Points 2                  2897.0
+Points Allowed 1          2694.0
+Points Allowed 2          2340.0
+Offense 1                   84.6
+Offense 2                   74.3
+Defense 1                   69.1
+Defense 2                   60.0
+Win Pct 1                   88.2
+Win Pct 2                   88.2
+3P 1                        35.5
+3P 2                        39.8
+Score 1                     56.0
+Score 2                     53.0
+Winner                   Florida
+Name: 66, dtype: object
+2025-03-19 19:45:02,288 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                   Florida
+Team 2                   Houston
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                         9.3
+Points 1                  3300.0
+Points 2                  2897.0
+Points Allowed 1          2694.0
+Points Allowed 2          2340.0
+Offense 1                   84.6
+Offense 2                   74.3
+Defense 1                   69.1
+Defense 2                   60.0
+Win Pct 1                   88.2
+Win Pct 2                   88.2
+3P 1                        35.5
+3P 2                        39.8
+Score 1                     56.0
+Score 2                     53.0
+Winner                   Florida
+Name: 66, dtype: object
+2025-03-20 10:29:27,727 - __main__ - INFO - Run 1

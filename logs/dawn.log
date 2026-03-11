@@ -1,0 +1,58 @@
+2025-03-21 03:01:16,668 - __main__ - INFO - Run 1
+2025-03-21 03:01:16,879 - __main__ - INFO - Run 2
+2025-03-21 03:01:17,084 - __main__ - INFO - Run 3
+2025-03-21 03:01:17,295 - __main__ - INFO - Run 4
+2025-03-21 03:01:17,497 - __main__ - INFO - Run 5
+2025-03-21 03:01:17,703 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.4823246753246753
+2025-03-21 03:01:17,703 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.5440064935064935
+2025-03-21 03:01:17,703 - __main__ - INFO - Lasso Regressor average accuracy: 0.5347402597402597
+2025-03-21 03:01:17,703 - __main__ - INFO - Random Forest average accuracy: 0.6327922077922078
+2025-03-21 03:01:17,703 - __main__ - INFO - XGBoost average accuracy: 0.5014545454545456
+2025-03-21 03:01:17,703 - __main__ - INFO - Now using random forest regression on the 2024 bracket!
+2025-03-21 03:01:17,703 - __main__ - INFO - samples: 4
+2025-03-21 03:05:38,036 - __main__ - INFO - Run 1
+2025-03-21 03:05:38,241 - __main__ - INFO - Run 2
+2025-03-21 03:05:38,442 - __main__ - INFO - Run 3
+2025-03-21 03:05:38,644 - __main__ - INFO - Run 4
+2025-03-21 03:05:38,845 - __main__ - INFO - Run 5
+2025-03-21 03:05:39,042 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.6433681868743047
+2025-03-21 03:05:39,042 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.7472023235693982
+2025-03-21 03:05:39,042 - __main__ - INFO - Lasso Regressor average accuracy: 0.7767808676307009
+2025-03-21 03:05:39,042 - __main__ - INFO - Random Forest average accuracy: 0.7206242209156558
+2025-03-21 03:05:39,042 - __main__ - INFO - XGBoost average accuracy: 0.7302857495983192
+2025-03-21 03:05:39,042 - __main__ - INFO - Now using lasso regression on the 2024 bracket!
+2025-03-21 03:05:39,042 - __main__ - INFO - alpha: 0.0001
+2025-03-21 03:05:39,172 - __main__ - INFO - Year                   2025
+Round          Championship
+Seed 1                  2.0
+Seed 2                  2.0
+Team 1                UConn
+Team 2                  TCU
+Offense 1              77.6
+Offense 2              80.5
+Defense 1              65.4
+Defense 2              58.2
+Win Pct 1              91.2
+Win Pct 2              91.2
+Score 1                71.0
+Score 2                83.0
+Winner                  TCU
+Round Score            32.0
+Name: 66, dtype: object
+2025-03-21 03:05:39,173 - __main__ - INFO - Year                   2025
+Round          Championship
+Seed 1                  2.0
+Seed 2                  2.0
+Team 1                UConn
+Team 2                  TCU
+Offense 1              77.6
+Offense 2              80.5
+Defense 1              65.4
+Defense 2              58.2
+Win Pct 1              91.2
+Win Pct 2              91.2
+Score 1                71.0
+Score 2                83.0
+Winner                  TCU
+Round Score            32.0
+Name: 66, dtype: object

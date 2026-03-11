@@ -1,0 +1,66 @@
+2025-03-20 11:09:09,053 - __main__ - INFO - Run 1
+2025-03-20 11:09:09,394 - __main__ - INFO - Run 2
+2025-03-20 11:09:09,728 - __main__ - INFO - Run 3
+2025-03-20 11:09:10,068 - __main__ - INFO - Run 4
+2025-03-20 11:09:10,409 - __main__ - INFO - Run 5
+2025-03-20 11:09:10,748 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.6652861840214156
+2025-03-20 11:09:10,748 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.5973763356082818
+2025-03-20 11:09:10,748 - __main__ - INFO - Lasso Regressor average accuracy: 0.652129015469909
+2025-03-20 11:09:10,748 - __main__ - INFO - Random Forest average accuracy: 0.7095450751450534
+2025-03-20 11:09:10,748 - __main__ - INFO - XGBoost average accuracy: 0.6125245141582367
+2025-03-20 11:09:10,748 - __main__ - INFO - Now using random forest regression on the 2024 bracket!
+2025-03-20 11:09:10,748 - __main__ - INFO - samples: 2
+2025-03-20 11:09:11,144 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                    Auburn
+Team 2                      Duke
+GP 1                        38.0
+GP 2                        39.0
+TO 1                         9.2
+TO 2                         9.6
+Points 1                  3154.0
+Points 2                  3179.0
+Points Allowed 1          2654.0
+Points Allowed 2          2432.0
+Offense 1                   83.0
+Offense 2                   81.5
+Defense 1                   69.8
+Defense 2                   62.4
+Win Pct 1                   84.8
+Win Pct 2                   91.2
+3P 1                        36.8
+3P 2                        37.7
+Score 1                     68.0
+Score 2                     71.0
+Winner                      Duke
+Round Score                 32.0
+Name: 66, dtype: object
+2025-03-20 11:09:11,148 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                    Auburn
+Team 2                      Duke
+GP 1                        38.0
+GP 2                        39.0
+TO 1                         9.2
+TO 2                         9.6
+Points 1                  3154.0
+Points 2                  3179.0
+Points Allowed 1          2654.0
+Points Allowed 2          2432.0
+Offense 1                   83.0
+Offense 2                   81.5
+Defense 1                   69.8
+Defense 2                   62.4
+Win Pct 1                   84.8
+Win Pct 2                   91.2
+3P 1                        36.8
+3P 2                        37.7
+Score 1                     68.0
+Score 2                     71.0
+Winner                      Duke
+Round Score                 32.0
+Name: 66, dtype: object

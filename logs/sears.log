@@ -1,0 +1,131 @@
+2025-03-18 17:41:44,685 - __main__ - INFO - Run 1
+2025-03-18 17:41:44,934 - __main__ - INFO - Run 2
+2025-03-18 17:41:45,179 - __main__ - INFO - Run 3
+2025-03-18 17:41:45,412 - __main__ - INFO - Run 4
+2025-03-18 17:41:45,641 - __main__ - INFO - Run 5
+2025-03-18 17:41:45,871 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.4118524573965912
+2025-03-18 17:41:45,871 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.4503671525677757
+2025-03-18 17:41:45,871 - __main__ - INFO - Lasso Regressor average accuracy: 0.5506820357314581
+2025-03-18 17:41:45,871 - __main__ - INFO - Random Forest average accuracy: 0.4503671525677757
+2025-03-18 17:41:45,871 - __main__ - INFO - Now using lasso regression on the 2024 bracket!
+2025-03-18 17:41:45,871 - __main__ - INFO - alpha: 0.5
+2025-03-18 17:41:46,035 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                    Auburn
+Team 2                      Duke
+GP 1                        38.0
+GP 2                        39.0
+TO 1                         9.2
+TO 2                         9.6
+Points 1                  3208.0
+Points 2                  3239.0
+Points Allowed 1          2555.0
+Points Allowed 2          2328.0
+Offense 1                   84.4
+Offense 2                   83.1
+Defense 1                   67.2
+Defense 2                   59.7
+Win Pct 1                   84.8
+Win Pct 2                   91.2
+3P 1                        36.8
+3P 2                        37.7
+Score 1                     84.0
+Score 2                     54.0
+Winner                    Auburn
+Name: 66, dtype: object
+2025-03-18 17:41:46,036 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                    Auburn
+Team 2                      Duke
+GP 1                        38.0
+GP 2                        39.0
+TO 1                         9.2
+TO 2                         9.6
+Points 1                  3208.0
+Points 2                  3239.0
+Points Allowed 1          2555.0
+Points Allowed 2          2328.0
+Offense 1                   84.4
+Offense 2                   83.1
+Defense 1                   67.2
+Defense 2                   59.7
+Win Pct 1                   84.8
+Win Pct 2                   91.2
+3P 1                        36.8
+3P 2                        37.7
+Score 1                     84.0
+Score 2                     54.0
+Winner                    Auburn
+Name: 66, dtype: object
+2025-03-18 17:45:24,493 - __main__ - INFO - Run 1
+2025-03-18 17:45:24,740 - __main__ - INFO - Run 2
+2025-03-18 17:45:24,983 - __main__ - INFO - Run 3
+2025-03-18 17:45:25,222 - __main__ - INFO - Run 4
+2025-03-18 17:45:25,457 - __main__ - INFO - Run 5
+2025-03-18 17:46:46,775 - __main__ - INFO - Run 1
+2025-03-18 17:46:47,020 - __main__ - INFO - Run 2
+2025-03-18 17:46:47,260 - __main__ - INFO - Run 3
+2025-03-18 17:46:47,499 - __main__ - INFO - Run 4
+2025-03-18 17:46:47,739 - __main__ - INFO - Run 5
+2025-03-18 17:46:47,968 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.602301098485964
+2025-03-18 17:46:47,968 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.48048417580699987
+2025-03-18 17:46:47,968 - __main__ - INFO - Lasso Regressor average accuracy: 0.4891743792695619
+2025-03-18 17:46:47,968 - __main__ - INFO - Random Forest average accuracy: 0.48048417580699987
+2025-03-18 17:46:47,968 - __main__ - INFO - Now using k neighbors regression on the 2024 bracket!
+2025-03-18 17:46:47,968 - __main__ - INFO - neighbors: 5
+2025-03-18 17:46:48,145 - __main__ - INFO - Year                          2025
+Round                 Championship
+Seed 1                         2.0
+Seed 2                         2.0
+Team 1              Michigan State
+Team 2                   Tennessee
+GP 1                          38.0
+GP 2                          39.0
+TO 1                          11.5
+TO 2                          10.5
+Points 1                    2927.0
+Points 2                    2893.0
+Points Allowed 1            2553.0
+Points Allowed 2            2484.0
+Offense 1                     77.0
+Offense 2                     74.2
+Defense 1                     67.2
+Defense 2                     63.7
+Win Pct 1                     81.8
+Win Pct 2                     79.4
+3P 1                          30.8
+3P 2                          34.0
+Score 1                       69.0
+Score 2                       71.0
+Winner                   Tennessee
+Name: 66, dtype: object
+2025-03-18 17:46:48,147 - __main__ - INFO - Year                          2025
+Round                 Championship
+Seed 1                         2.0
+Seed 2                         2.0
+Team 1              Michigan State
+Team 2                   Tennessee
+GP 1                          38.0
+GP 2                          39.0
+TO 1                          11.5
+TO 2                          10.5
+Points 1                    2927.0
+Points 2                    2893.0
+Points Allowed 1            2553.0
+Points Allowed 2            2484.0
+Offense 1                     77.0
+Offense 2                     74.2
+Defense 1                     67.2
+Defense 2                     63.7
+Win Pct 1                     81.8
+Win Pct 2                     79.4
+3P 1                          30.8
+3P 2                          34.0
+Score 1                       69.0
+Score 2                       71.0
+Winner                   Tennessee
+Name: 66, dtype: object

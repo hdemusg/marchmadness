@@ -9,6 +9,16 @@ import pickle
 import warnings
 warnings.filterwarnings("ignore")
 
+def flip(row):
+    swaps = [('Seed 1', 'Seed 2'), ('Team 1', 'Team 2'), ('TO 1', 'TO 2'), ('GP 1', 'GP 2'), ('Points 1', 'Points 2'), ('Points Allowed 1', 'Points Allowed 2'), ('Offense 1', 'Offense 2'), ('Defense 1', 'Defense 2'), ('Win Pct 1', 'Win Pct 2'), ('3P 1', '3P 2'), ('Score 1', 'Score 2')]
+    for swap in swaps:
+        row[swap[0]], row[swap[1]] = row[swap[1]], row[swap[0]]
+    if row['Winner'] == row['Team 1']:
+        row['Winner'] = row['Team 2']
+    else:
+        row['Winner'] = row['Team 1']
+    return row
+
 def recalculate_efficiency(points, games):
     # Calculate the efficiency ratio
     efficiency = points / games
@@ -34,42 +44,54 @@ def generate_bracket(output_file, model_name, name):
     # test data: 2025 base bracket
     template = "templates/2025.csv"
     final_training = pd.read_csv("data/train.csv", index_col=0)
+    #apply round score to final_training
+    values = {'First Four': 0.5, 'R1': 1, 'R2': 2, 'Sweet 16': 4, 'Elite 8': 8, 'Final 4': 16, 'Championship': 32}
+    final_training['Round Score'] = final_training['Round'].map(values)
+    for row in range(len(final_training)):
+        # apply flip to 50% of rows in final_training
+        if np.random.rand() > 0.6:
+            final_training.iloc[row] = flip(final_training.iloc[row])
     final_test = pd.read_csv(template, index_col=0)
+    final_test['Round Score'] = final_test['Round'].map(values)
 
     # create models on an 70-15-15 split of training data, select the best performing predictor to use on 2023 data
     from sklearn.linear_model import Lasso
     from sklearn.neighbors import KNeighborsRegressor
     from sklearn.tree import DecisionTreeRegressor
-    from sklearn.ensemble import RandomForestRegressor
+    from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
     from sklearn.model_selection import train_test_split
+    from sklearn.multioutput import MultiOutputRegressor
 
     kscore = 0
     kn_params = [2, 3, 4, 5, 6]
     kn_best = None
     dscore = 0
-    dt_params = [1, 2, 3, 4, 5]
+    dt_params = [2, 3, 4, 5, 6]
     dt_best = None
     ascore = 0
-    la_params = [0.0001, 0.001, 0.01, 0.1, 0.5]
+    la_params = [0.00001, 0.0001, 0.001, 0.01, 0.1]
     la_best = None
     rscore = 0
-    rf_params = [1, 2, 3, 4, 5]
+    rf_params = [2, 3, 4, 5, 6]
     rf_best = None
+    xscore = 0
+    xg_params = [0.025, 0.05, 0.1, 0.2, 0.4]
+    xg_best = None
+    xscore = 0
 
-    x_vars = ['Seed 1', 'Seed 2', 'Offense 1', 'Offense 2', 'Defense 1', 'Defense 2', 'Win Pct 1', 'Win Pct 2', '3P 1', '3P 2']
+    x_vars = ['Round Score', 'Seed 1', 'Seed 2', 'TO 1', 'TO 2', 'Offense 1', 'Offense 2', 'Defense 1', 'Defense 2', 'Win Pct 1', 'Win Pct 2', '3P 1', '3P 2']
     y_vars = ['Score 1', 'Score 2']
 
     for run in range(1, 6):
         # create training and test split of the pre-2022 data
         #print(final_training.columns)
-        data_x = final_training[['Round', 'Seed 1', 'Seed 2', 'Offense 1', 'Offense 2', 'Defense 1', 'Defense 2', '3P 1', '3P 2', 'Win Pct 1', 'Win Pct 2']]
+        data_x = final_training[['Round', 'Round Score', 'Seed 1', 'Seed 2', 'TO 1', 'TO 2', 'Offense 1', 'Offense 2', 'Defense 1', 'Defense 2', 'Win Pct 1', 'Win Pct 2', '3P 1', '3P 2']]
         data_y = final_training[y_vars]
         ft_train_x, ft_tv_x, ft_train_y, ft_tv_y = train_test_split(data_x, data_y, train_size = 0.70)
         ft_test_x, ft_val_x, ft_test_y, ft_val_y = train_test_split(ft_tv_x, ft_tv_y, train_size=0.50)
         
         logger.info(f"Run {run}")
         par = run - 1
-        values = {'First Four': 0.5, 'R1': 1, 'R2': 2, 'Sweet 16': 4, 'Elite 8': 8, 'Final 4': 16, 'Championship': 32}
         # Test for Edey - does unweighting the rounds allow for more upsets
         #values = {'First Four': 1, 'R1': 1, 'R2': 1, 'Sweet 16': 1, 'Elite 8': 1, 'Final 4': 1, 'Championship': 1}
 
@@ -116,6 +138,7 @@ def generate_bracket(output_file, model_name, name):
 
         dt = DecisionTreeRegressor(min_samples_split=dt_params[par])
         train_x = ft_train_x.drop('Round', axis=1)
+        # train_x = ft_train_x
         dt.fit(train_x, ft_train_y)
 
         dt_correct = 0
@@ -150,11 +173,12 @@ def generate_bracket(output_file, model_name, name):
                 dtv_correct += rv
             dtv_game_value += rv
         dtscore = float(dtv_correct / dtv_game_value)
-        if dt_best == None or dtscore > dt_best[0]:
+        if dt_best == None or dtscore > dt_best[1]:
             dt_best = (dt_params[par], dtscore)
         
         la = Lasso(alpha = la_params[par])
         train_x = ft_train_x.drop('Round', axis=1)
+        # train_x = ft_train_x
         la.fit(train_x, ft_train_y)
 
         la_correct = 0
@@ -189,11 +213,12 @@ def generate_bracket(output_file, model_name, name):
                 lav_correct += rv
             lav_game_value += rv
         lascore = float(lav_correct / lav_game_value)
-        if la_best == None or lascore > la_best[0]:
+        if la_best == None or lascore > la_best[1]:
             la_best = (la_params[par], lascore)
 
-        rf = RandomForestRegressor(min_samples_split=dt_params[par])
+        rf = RandomForestRegressor(min_samples_split=rf_params[par])
         train_x = ft_train_x.drop('Round', axis=1)
+        # train_x = ft_train_x
         rf.fit(train_x, ft_train_y)
 
         rf_correct = 0
@@ -202,7 +227,7 @@ def generate_bracket(output_file, model_name, name):
             data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
             round = data[0][0]
             rv = values[round]
-            pred = dt.predict([data[0][1:]])[0]
+            pred = rf.predict([data[0][1:]])[0]
             res = ft_test_y.iloc[i].values
             if pred[0] < pred[1] and res[0] < res[1]:
                 rf_correct += rv
@@ -226,36 +251,79 @@ def generate_bracket(output_file, model_name, name):
                 rfv_correct += rv
             rfv_game_value += rv
         rfscore = float(rfv_correct / rfv_game_value)
-        if rf_best == None or rfscore > rf_best[0]:
+        if rf_best == None or rfscore > rf_best[1]:
             rf_best = (rf_params[par], rfscore)
+
+        xg = MultiOutputRegressor(GradientBoostingRegressor(learning_rate=xg_params[par]))
+        train_x = ft_train_x.drop('Round', axis=1)
+        # train_x = ft_train_x
+        xg.fit(train_x, ft_train_y)
+
+        xg_correct = 0
+        xg_game_value = 0
+        for i in range(len(ft_test_x)):
+            data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
+            round = data[0][0]
+            rv = values[round]
+            pred = xg.predict([data[0][1:]])[0]
+            res = ft_test_y.iloc[i].values
+            if pred[0] < pred[1] and res[0] < res[1]:
+                xg_correct += rv
+            elif pred[0] >= pred[1] and res[0] >= res[1]:
+                xg_correct += rv
+            xg_game_value += rv
+        #print("Random Forest Regressor accuracy: ", float(rf_correct / rf_game_value))
+        xscore += float(xg_correct / xg_game_value)
+
+        xgv_correct = 0
+        xgv_game_value = 0
+        for i in range(len(ft_val_x)):
+            data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
+            round = data[0][0]
+            rv = values[round]
+            pred = xg.predict([data[0][1:]])[0]
+            res = ft_val_y.iloc[i].values
+            if pred[0] < pred[1] and res[0] < res[1]:
+                xgv_correct += rv
+            elif pred[0] >= pred[1] and res[0] >= res[1]:
+                xgv_correct += rv
+            xgv_game_value += rv
+        xgscore = float(xgv_correct / xgv_game_value)
+        if xg_best == None or xgscore > xg_best[1]:
+            xg_best = (xg_params[par], xgscore)
 
     logger.info(f"K Neighbors Regressor average accuracy: {float(kscore/5)}")
     logger.info(f"Decision Tree Regressor average accuracy: {float(dscore/5)}")
     logger.info(f"Lasso Regressor average accuracy: {float(ascore/5)}")
     logger.info(f"Random Forest average accuracy: {float(rscore/5)}")
+    logger.info(f"XGBoost average accuracy: {float(xscore/5)}")
 
-    if max(dscore, kscore, rscore, ascore) == rscore:
+    if max(dscore, kscore, rscore, ascore, xscore) == rscore:
         logger.info("Now using random forest regression on the 2024 bracket!")
         logger.info(f"samples: {rf_best[0]}")
         model = RandomForestRegressor(min_samples_split=rf_best[0])
-    elif max(dscore, kscore, rscore, ascore) == kscore:
+    elif max(dscore, kscore, rscore, ascore, xscore) == kscore:
         logger.info("Now using k neighbors regression on the 2024 bracket!")
         logger.info(f"neighbors: {kn_best[0]}")
         model = KNeighborsRegressor(n_neighbors=kn_best[0])
-    elif max(dscore, kscore, rscore, ascore) == ascore:
+    elif max(dscore, kscore, rscore, ascore, xscore) == ascore:
         logger.info("Now using lasso regression on the 2024 bracket!")
         logger.info(f"alpha: {la_best[0]}")
         model = Lasso(alpha = la_best[0])
-    else: 
+    elif max(dscore, kscore, rscore, ascore, xscore) == dscore:
         logger.info("Now using decision tree regression on the 2024 bracket!")
         logger.info(f"samples: {dt_best[0]}")
         model = DecisionTreeRegressor(min_samples_split=dt_best[0])
+    else:
+        logger.info("Now using xgboost regression on the 2024 bracket!")
+        logger.info(f"learning_rate: {xg_best[0]}")
+        model = MultiOutputRegressor(GradientBoostingRegressor(learning_rate=xg_best[0]))
 
     data_x = data_x.drop('Round', axis=1)
     model.fit(data_x, data_y)
     bracket = final_test
     print(bracket.columns)
-
+    
     # First Four - Alabama State vs Saint Francis
     firstfour_1 = bracket.iloc[0][x_vars]
     ff1_pred = model.predict(np.asarray(firstfour_1).reshape(1, -1))[0]
@@ -279,6 +347,7 @@ def generate_bracket(output_file, model_name, name):
         bracket.iat[4, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
         bracket.iat[4, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
         bracket.iat[4, bracket.columns.get_loc('3P 2')] = bracket.iloc[0][['3P 2']].values[0]
+        bracket.iat[4, bracket.columns.get_loc('TO 2')] = bracket.iloc[0][['TO 2']].values[0]
         #bracket.iat[12, bracket.columns.get_loc('Wins 2')] = wins
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[4, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[0][['Win Pct 2']].values[0]
@@ -299,7 +368,8 @@ def generate_bracket(output_file, model_name, name):
         bracket.iat[4, bracket.columns.get_loc('Points Allowed 2')] = pts_ag
         bracket.iat[4, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
         bracket.iat[4, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
-        bracket.iat[4, bracket.columns.get_loc('3P 2')] = bracket.iloc[0][['3P 1']].values[0]       
+        bracket.iat[4, bracket.columns.get_loc('3P 2')] = bracket.iloc[0][['3P 1']].values[0]  
+        bracket.iat[4, bracket.columns.get_loc('TO 2')] = bracket.iloc[0][['TO 1']].values[0]
         #bracket.iat[12, bracket.columns.get_loc('Wins 2')] = wins
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[4, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[0][['Win Pct 1']].values[0]
@@ -327,6 +397,7 @@ def generate_bracket(output_file, model_name, name):
         bracket.iat[8, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
         bracket.iat[8, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
         bracket.iat[8, bracket.columns.get_loc('3P 2')] = bracket.iloc[1][['3P 2']].values[0]
+        bracket.iat[8, bracket.columns.get_loc('TO 2')] = bracket.iloc[1][['TO 2']].values[0]
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[8, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[1][['Win Pct 2']].values[0]
     
@@ -346,7 +417,8 @@ def generate_bracket(output_file, model_name, name):
         bracket.iat[8, bracket.columns.get_loc('Points Allowed 2')] = pts_ag
         bracket.iat[8, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
         bracket.iat[8, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
-        bracket.iat[8, bracket.columns.get_loc('3P 2')] = bracket.iloc[1][['3P 1']].values[0]         
+        bracket.iat[8, bracket.columns.get_loc('3P 2')] = bracket.iloc[1][['3P 1']].values[0]   
+        bracket.iat[8, bracket.columns.get_loc('TO 2')] = bracket.iloc[1][['TO 1']].values[0]      
         #bracket.iat[12, bracket.columns.get_loc('Wins 2')] = wins
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[8, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[1][['Win Pct 1']].values[0]
@@ -375,6 +447,7 @@ def generate_bracket(output_file, model_name, name):
         bracket.iat[20, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
         bracket.iat[20, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
         bracket.iat[20, bracket.columns.get_loc('3P 2')] = bracket.iloc[2][['3P 2']].values[0]
+        bracket.iat[20, bracket.columns.get_loc('TO 2')] = bracket.iloc[2][['TO 2']].values[0]
         #bracket.iat[12, bracket.columns.get_loc('Wins 2')] = wins
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[20, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[2][['Win Pct 2']].values[0]
@@ -395,7 +468,8 @@ def generate_bracket(output_file, model_name, name):
         bracket.iat[20, bracket.columns.get_loc('Points Allowed 2')] = pts_ag
         bracket.iat[20, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
         bracket.iat[20, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
-        bracket.iat[20, bracket.columns.get_loc('3P 2')] = bracket.iloc[2][['3P 1']].values[0]           
+        bracket.iat[20, bracket.columns.get_loc('3P 2')] = bracket.iloc[2][['3P 1']].values[0]    
+        bracket.iat[20, bracket.columns.get_loc('TO 2')] = bracket.iloc[2][['TO 1']].values[0]       
         #bracket.iat[12, bracket.columns.get_loc('Wins 2')] = wins
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[20, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[2][['Win Pct 1']].values[0]
@@ -426,6 +500,7 @@ def generate_bracket(output_file, model_name, name):
         bracket.iat[32, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
         bracket.iat[32, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
         bracket.iat[32, bracket.columns.get_loc('3P 2')] = bracket.iloc[3][['3P 2']].values[0]
+        bracket.iat[32, bracket.columns.get_loc('TO 2')] = bracket.iloc[3][['TO 2']].values[0]
         #bracket.iat[12, bracket.columns.get_loc('Wins 2')] = wins
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[32, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[3][['Win Pct 2']].values[0]
@@ -445,7 +520,8 @@ def generate_bracket(output_file, model_name, name):
         bracket.iat[32, bracket.columns.get_loc('Points Allowed 2')] = pts_ag
         bracket.iat[32, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
         bracket.iat[32, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
-        bracket.iat[32, bracket.columns.get_loc('3P 2')] = bracket.iloc[3][['3P 1']].values[0]     
+        bracket.iat[32, bracket.columns.get_loc('3P 2')] = bracket.iloc[3][['3P 1']].values[0]   
+        bracket.iat[32, bracket.columns.get_loc('TO 2')] = bracket.iloc[3][['TO 1']].values[0]  
         #bracket.iat[12, bracket.columns.get_loc('Wins 2')] = wins
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[32, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[3][['Win Pct 1']].values[0]
@@ -477,6 +553,7 @@ def generate_bracket(output_file, model_name, name):
             #winpct = float(bracket.iloc[source][['Wins 2']].values[0] / bracket.iloc[source][['GP 2']].values[0])
             winpct = bracket.iloc[source][['Win Pct 2']].values[0]
             threepct = bracket.iloc[source][['3P 2']].values[0]
+            to = bracket.iloc[source][['TO 2']].values[0]
         else:
             bracket.iat[source, bracket.columns.get_loc('Winner')] = r1_team1.values[0]
             teamname = r1_team1.values[0]
@@ -492,6 +569,7 @@ def generate_bracket(output_file, model_name, name):
             #winpct = float(bracket.iloc[source][['Wins 1']].values[0] / bracket.iloc[source][['GP 1']].values[0])
             winpct = bracket.iloc[source][['Win Pct 1']].values[0]
             threepct = bracket.iloc[source][['3P 1']].values[0]
+            to = bracket.iloc[source][['TO 1']].values[0]
         target = int(a / 2) + r2s
         oe = a % 2
         if oe:
@@ -505,6 +583,7 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[target, bracket.columns.get_loc('Defense 2')] = defense
             bracket.iat[target, bracket.columns.get_loc('Win Pct 2')] = winpct
             bracket.iat[target, bracket.columns.get_loc('3P 2')] = threepct
+            bracket.iat[target, bracket.columns.get_loc('TO 2')] = to
         else:
             #bracket.iat[target, bracket.columns.get_loc('Wins 1')] = wins
             bracket.iat[target, bracket.columns.get_loc('GP 1')] = gp
@@ -516,6 +595,7 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[target, bracket.columns.get_loc('Defense 1')] = defense
             bracket.iat[target, bracket.columns.get_loc('Win Pct 1')] = winpct
             bracket.iat[target, bracket.columns.get_loc('3P 1')] = threepct
+            bracket.iat[target, bracket.columns.get_loc('TO 1')] = to
         #print(bracket.iloc[target])
 
     #Round of 32
@@ -543,6 +623,7 @@ def generate_bracket(output_file, model_name, name):
             #winpct = float(bracket.iloc[source][['Wins 2']].values[0] / bracket.iloc[source][['GP 2']].values[0])
             winpct = bracket.iloc[source][['Win Pct 2']].values[0]
             threepct = bracket.iloc[source][['3P 2']].values[0]
+            to = bracket.iloc[source][['TO 2']].values[0]
         else:
             bracket.iat[source, bracket.columns.get_loc('Winner')] = r2_team1.values[0]
             teamname = r2_team1.values[0]
@@ -558,6 +639,7 @@ def generate_bracket(output_file, model_name, name):
             #winpct = float(bracket.iloc[source][['Wins 1']].values[0] / bracket.iloc[source][['GP 1']].values[0])
             winpct = bracket.iloc[source][['Win Pct 1']].values[0]
             threepct = bracket.iloc[source][['3P 1']].values[0]
+            to = bracket.iloc[source][['TO 1']].values[0]
         target = int(b / 2) + sss
         oe = b % 2
         if oe:
@@ -571,6 +653,7 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[target, bracket.columns.get_loc('Defense 2')] = defense
             bracket.iat[target, bracket.columns.get_loc('Win Pct 2')] = winpct
             bracket.iat[target, bracket.columns.get_loc('3P 2')] = threepct
+            bracket.iat[target, bracket.columns.get_loc('TO 2')] = to
         else:
             #bracket.iat[target, bracket.columns.get_loc('Wins 1')] = wins
             bracket.iat[target, bracket.columns.get_loc('GP 1')] = gp
@@ -582,6 +665,7 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[target, bracket.columns.get_loc('Defense 1')] = defense
             bracket.iat[target, bracket.columns.get_loc('Win Pct 1')] = winpct
             bracket.iat[target, bracket.columns.get_loc('3P 1')] = threepct
+            bracket.iat[target, bracket.columns.get_loc('TO 1')] = to
         #print(bracket.iloc[target])
 
     # Sweet 16
@@ -609,6 +693,7 @@ def generate_bracket(output_file, model_name, name):
             #winpct = float(bracket.iloc[source][['Wins 2']].values[0] / bracket.iloc[source][['GP 2']].values[0])
             winpct = bracket.iloc[source][['Win Pct 2']].values[0]
             threepct = bracket.iloc[source][['3P 2']].values[0]
+            to = bracket.iloc[source][['TO 2']].values[0]
         else:
             bracket.iat[source, bracket.columns.get_loc('Winner')] = ss_team1.values[0]
             teamname = ss_team1.values[0]
@@ -624,6 +709,7 @@ def generate_bracket(output_file, model_name, name):
             #winpct = float(bracket.iloc[source][['Wins 1']].values[0] / bracket.iloc[source][['GP 1']].values[0])
             winpct = bracket.iloc[source][['Win Pct 1']].values[0]
             threepct = bracket.iloc[source][['3P 1']].values[0]
+            to = bracket.iloc[source][['TO 1']].values[0]
         target = int(c / 2) + ees
         oe = c % 2
         if oe:
@@ -637,6 +723,7 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[target, bracket.columns.get_loc('Defense 2')] = defense
             bracket.iat[target, bracket.columns.get_loc('Win Pct 2')] = winpct
             bracket.iat[target, bracket.columns.get_loc('3P 2')] = threepct
+            bracket.iat[target, bracket.columns.get_loc('TO 2')] = to
         else:
             #bracket.iat[target, bracket.columns.get_loc('Wins 1')] = wins
             bracket.iat[target, bracket.columns.get_loc('GP 1')] = gp
@@ -648,6 +735,7 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[target, bracket.columns.get_loc('Defense 1')] = defense
             bracket.iat[target, bracket.columns.get_loc('Win Pct 1')] = winpct
             bracket.iat[target, bracket.columns.get_loc('3P 1')] = threepct
+            bracket.iat[target, bracket.columns.get_loc('TO 1')] = to
         #print(bracket.iloc[target])
 
     # Elite 8
@@ -674,6 +762,7 @@ def generate_bracket(output_file, model_name, name):
             defense = recalculate_efficiency(pts_ag, gp)#winpct = float(bracket.iloc[source][['Wins 2']].values[0] / bracket.iloc[source][['GP 2']].values[0])
             winpct = bracket.iloc[source][['Win Pct 2']].values[0]
             threepct = bracket.iloc[source][['3P 2']].values[0]
+            to = bracket.iloc[source][['TO 2']].values[0]
         else:
             bracket.iat[source, bracket.columns.get_loc('Winner')] = ee_team1.values[0]
             teamname = ee_team1.values[0]
@@ -689,6 +778,7 @@ def generate_bracket(output_file, model_name, name):
             #winpct = float(bracket.iloc[source][['Wins 1']].values[0] / bracket.iloc[source][['GP 1']].values[0])
             winpct = bracket.iloc[source][['Win Pct 1']].values[0]
             threepct = bracket.iloc[source][['3P 1']].values[0]
+            to = bracket.iloc[source][['TO 1']].values[0]
         target = int(d / 2) + ffs
         oe = d % 2
         if oe:
@@ -702,6 +792,7 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[target, bracket.columns.get_loc('Defense 2')] = defense
             bracket.iat[target, bracket.columns.get_loc('Win Pct 2')] = winpct
             bracket.iat[target, bracket.columns.get_loc('3P 2')] = threepct
+            bracket.iat[target, bracket.columns.get_loc('TO 2')] = to
         else:
             #bracket.iat[target, bracket.columns.get_loc('Wins 1')] = wins
             bracket.iat[target, bracket.columns.get_loc('GP 1')] = gp
@@ -713,6 +804,7 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[target, bracket.columns.get_loc('Defense 1')] = defense
             bracket.iat[target, bracket.columns.get_loc('Win Pct 1')] = winpct
             bracket.iat[target, bracket.columns.get_loc('3P 1')] = threepct
+            bracket.iat[target, bracket.columns.get_loc('TO 1')] = to
         #print(bracket.iloc[target])
 
     # Final Four
@@ -740,6 +832,7 @@ def generate_bracket(output_file, model_name, name):
             #winpct = float(bracket.iloc[source][['Wins 2']].values[0] / bracket.iloc[source][['GP 2']].values[0])
             winpct = bracket.iloc[source][['Win Pct 2']].values[0]
             threepct = bracket.iloc[source][['3P 2']].values[0]
+            to = bracket.iloc[source][['TO 2']].values[0]
             
         else:
             bracket.iat[source, bracket.columns.get_loc('Winner')] = ff_team1.values[0]
@@ -756,6 +849,7 @@ def generate_bracket(output_file, model_name, name):
             #winpct = float(bracket.iloc[source][['Wins 1']].values[0] / bracket.iloc[source][['GP 1']].values[0])
             winpct = bracket.iloc[source][['Win Pct 1']].values[0]
             threepct = bracket.iloc[source][['3P 1']].values[0]
+            to = bracket.iloc[source][['TO 1']].values[0]
             
         target = int(e / 2) + cs
         oe = e % 2
@@ -770,6 +864,7 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[target, bracket.columns.get_loc('Defense 2')] = defense
             bracket.iat[target, bracket.columns.get_loc('Win Pct 2')] = winpct
             bracket.iat[target, bracket.columns.get_loc('3P 2')] = threepct
+            bracket.iat[target, bracket.columns.get_loc('TO 2')] = to
         else:
             #bracket.iat[target, bracket.columns.get_loc('Wins 1')] = wins
             bracket.iat[target, bracket.columns.get_loc('GP 1')] = gp
@@ -781,6 +876,7 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[target, bracket.columns.get_loc('Defense 1')] = defense
             bracket.iat[target, bracket.columns.get_loc('Win Pct 1')] = winpct
             bracket.iat[target, bracket.columns.get_loc('3P 1')] = threepct
+            bracket.iat[target, bracket.columns.get_loc('TO 1')] = to
         #print(bracket.iloc[target])
 
     #Championship

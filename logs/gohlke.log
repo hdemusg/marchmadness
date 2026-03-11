@@ -1,0 +1,64 @@
+2025-03-20 10:40:42,459 - __main__ - INFO - Run 1
+2025-03-20 10:40:42,800 - __main__ - INFO - Run 2
+2025-03-20 10:40:43,137 - __main__ - INFO - Run 3
+2025-03-20 10:40:43,472 - __main__ - INFO - Run 4
+2025-03-20 10:40:43,809 - __main__ - INFO - Run 5
+2025-03-20 10:40:44,148 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.682680407156636
+2025-03-20 10:40:44,148 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.43189459054688706
+2025-03-20 10:40:44,148 - __main__ - INFO - Lasso Regressor average accuracy: 0.6461501308701147
+2025-03-20 10:40:44,148 - __main__ - INFO - Random Forest average accuracy: 0.631463536016316
+2025-03-20 10:40:44,148 - __main__ - INFO - XGBoost average accuracy: 0.5747979827049127
+2025-03-20 10:40:44,148 - __main__ - INFO - Now using k neighbors regression on the 2024 bracket!
+2025-03-20 10:40:44,148 - __main__ - INFO - neighbors: 4
+2025-03-20 10:40:44,282 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                   Florida
+Team 2                      Duke
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                         9.6
+Points 1                  3280.0
+Points 2                  3209.0
+Points Allowed 1          2684.0
+Points Allowed 2          2428.0
+Offense 1                   84.1
+Offense 2                   82.3
+Defense 1                   68.8
+Defense 2                   62.3
+Win Pct 1                   88.2
+Win Pct 2                   91.2
+3P 1                        35.5
+3P 2                        37.7
+Score 1                     77.0
+Score 2                     68.0
+Winner                   Florida
+Name: 66, dtype: object
+2025-03-20 10:40:44,283 - __main__ - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                   Florida
+Team 2                      Duke
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                         9.6
+Points 1                  3280.0
+Points 2                  3209.0
+Points Allowed 1          2684.0
+Points Allowed 2          2428.0
+Offense 1                   84.1
+Offense 2                   82.3
+Defense 1                   68.8
+Defense 2                   62.3
+Win Pct 1                   88.2
+Win Pct 2                   91.2
+3P 1                        35.5
+3P 2                        37.7
+Score 1                     77.0
+Score 2                     68.0
+Winner                   Florida
+Name: 66, dtype: object
