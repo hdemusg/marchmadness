@@ -3,7 +3,8 @@ from brackets import generate_bracket
 
 st.title("one shining model 🏀")
 st.write("This app generates a March Madness bracket using ML!")
-st.link_button("GitHub repo", "https://gith", *, help=None, type="secondary", icon=None, icon_position="left", disabled=False, use_container_width=None, width="content", shortcut=None)
+st.link_button("GitHub repo", "https://github.com/hdemusg/marchmadness")
+st.link_button("About me", "https://linkedin.com/in/sumedh-garimella")
 
 with st.form("generate_bracket"):
     year = st.selectbox("Select a year to predict: ", ["2026"])
