@@ -1,0 +1,80 @@
+2026-03-18 11:15:48,665 - __main__ - INFO - Run 1
+2026-03-18 11:15:49,011 - __main__ - INFO - Run 2
+2026-03-18 11:15:49,366 - __main__ - INFO - Run 3
+2026-03-18 11:15:49,692 - __main__ - INFO - Run 4
+2026-03-18 11:15:50,028 - __main__ - INFO - Run 5
+2026-03-18 11:15:50,358 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.4236843477617884
+2026-03-18 11:15:50,358 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.5268878306205658
+2026-03-18 11:15:50,358 - __main__ - INFO - Lasso Regressor average accuracy: 0.4988010203309459
+2026-03-18 11:15:50,358 - __main__ - INFO - Random Forest average accuracy: 0.5934310768521606
+2026-03-18 11:15:50,358 - __main__ - INFO - XGBoost average accuracy: 0.47556148255003167
+2026-03-18 11:15:50,358 - __main__ - INFO - Auto-selected Random Forest with params: (6, 0.6439393939393939)
+2026-03-18 11:17:41,243 - __main__ - INFO - Run 1
+2026-03-18 11:17:41,575 - __main__ - INFO - Run 2
+2026-03-18 11:17:41,899 - __main__ - INFO - Run 3
+2026-03-18 11:17:42,225 - __main__ - INFO - Run 4
+2026-03-18 11:17:42,546 - __main__ - INFO - Run 5
+2026-03-18 11:17:42,866 - __main__ - INFO - K Neighbors Regressor average accuracy: 0.5516651740814653
+2026-03-18 11:17:42,866 - __main__ - INFO - Decision Tree Regressor average accuracy: 0.38017502180940876
+2026-03-18 11:17:42,866 - __main__ - INFO - Lasso Regressor average accuracy: 0.5474596155362004
+2026-03-18 11:17:42,866 - __main__ - INFO - Random Forest average accuracy: 0.49152794731301325
+2026-03-18 11:17:42,866 - __main__ - INFO - XGBoost average accuracy: 0.5417029858536093
+2026-03-18 11:17:42,866 - __main__ - INFO - Auto-selected KNeighbors with params: (5, 0.7735849056603774)
+2026-03-18 11:17:42,994 - __main__ - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3305.0
+Points Allowed 1          2484.0
+Points Allowed 2          2679.0
+Offense 1                   81.5
+Offense 2                   84.7
+Defense 1                   63.7
+Defense 2                   68.7
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     75.0
+Score 2                     64.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 11:17:42,996 - __main__ - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3305.0
+Points Allowed 1          2484.0
+Points Allowed 2          2679.0
+Offense 1                   81.5
+Offense 2                   84.7
+Defense 1                   63.7
+Defense 2                   68.7
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     75.0
+Score 2                     64.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object

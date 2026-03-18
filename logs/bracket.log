@@ -1,0 +1,130 @@
+2026-03-16 20:37:04,572 - brackets - INFO - Run 1
+2026-03-16 20:37:05,025 - brackets - INFO - Run 2
+2026-03-16 20:37:05,489 - brackets - INFO - Run 3
+2026-03-16 20:37:05,933 - brackets - INFO - Run 4
+2026-03-16 20:37:06,364 - brackets - INFO - Run 5
+2026-03-16 20:37:06,798 - brackets - INFO - K Neighbors Regressor average accuracy: 0.6401795993499656
+2026-03-16 20:37:06,798 - brackets - INFO - Decision Tree Regressor average accuracy: 0.4463100440070473
+2026-03-16 20:37:06,798 - brackets - INFO - Lasso Regressor average accuracy: 0.5333657602109323
+2026-03-16 20:37:06,798 - brackets - INFO - Random Forest average accuracy: 0.5932304284690522
+2026-03-16 20:37:06,798 - brackets - INFO - XGBoost average accuracy: 0.5339715916713696
+2026-03-16 20:37:06,798 - brackets - INFO - Using Decision Tree with params: (4, 0.7534246575342466)
+2026-03-16 20:37:06,961 - brackets - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                      10.0
+Team 1                    Auburn
+Team 2                Utah State
+GP 1                        38.0
+GP 2                        38.0
+TO 1                         9.2
+TO 2                        10.7
+Points 1                  3187.0
+Points 2                  3050.0
+Points Allowed 1          2626.0
+Points Allowed 2          2638.0
+Offense 1                   83.9
+Offense 2                   80.3
+Defense 1                   69.1
+Defense 2                   69.4
+Win Pct 1                   84.8
+Win Pct 2                   78.8
+3P 1                        36.8
+3P 2                        36.5
+Score 1                     72.0
+Score 2                     66.0
+Winner                    Auburn
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-16 20:37:06,963 - brackets - INFO - Year                        2025
+Round               Championship
+Seed 1                       1.0
+Seed 2                      10.0
+Team 1                    Auburn
+Team 2                Utah State
+GP 1                        38.0
+GP 2                        38.0
+TO 1                         9.2
+TO 2                        10.7
+Points 1                  3187.0
+Points 2                  3050.0
+Points Allowed 1          2626.0
+Points Allowed 2          2638.0
+Offense 1                   83.9
+Offense 2                   80.3
+Defense 1                   69.1
+Defense 2                   69.4
+Win Pct 1                   84.8
+Win Pct 2                   78.8
+3P 1                        36.8
+3P 2                        36.5
+Score 1                     72.0
+Score 2                     66.0
+Winner                    Auburn
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 12:04:41,482 - brackets - INFO - Run 1
+2026-03-18 12:04:41,778 - brackets - INFO - Run 2
+2026-03-18 12:04:42,073 - brackets - INFO - Run 3
+2026-03-18 12:04:42,367 - brackets - INFO - Run 4
+2026-03-18 12:04:42,652 - brackets - INFO - Run 5
+2026-03-18 12:04:42,945 - brackets - INFO - Random Forest average accuracy: 0.6066666666666667
+2026-03-18 12:04:42,945 - brackets - INFO - Using Random Forest with params: (6, 0.7096774193548387)
+2026-03-18 12:04:43,419 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       2.0
+Team 1                      Duke
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.3
+Points 1                  3167.0
+Points 2                  3163.0
+Points Allowed 1          2484.0
+Points Allowed 2          2562.0
+Offense 1                   81.2
+Offense 2                   81.1
+Defense 1                   63.7
+Defense 2                   65.7
+Win Pct 1                   94.1
+Win Pct 2                   79.4
+3P 1                        35.1
+3P 2                        38.7
+Score 1                     71.0
+Score 2                     72.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                    1
+Name: 66, dtype: object
+2026-03-18 12:04:43,424 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       2.0
+Team 1                      Duke
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.3
+Points 1                  3167.0
+Points 2                  3163.0
+Points Allowed 1          2484.0
+Points Allowed 2          2562.0
+Offense 1                   81.2
+Offense 2                   81.1
+Defense 1                   63.7
+Defense 2                   65.7
+Win Pct 1                   94.1
+Win Pct 2                   79.4
+3P 1                        35.1
+3P 2                        38.7
+Score 1                     71.0
+Score 2                     72.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                    1
+Name: 66, dtype: object

@@ -3,6 +3,7 @@ import sklearn
 import numpy as np
 import logging
 import sys
+import io
 
 import pickle
 
@@ -25,7 +26,7 @@ def recalculate_efficiency(points, games):
     #return efficiency rounded to the nearest tenth
     return round(efficiency, 1)
 
-def generate_bracket(output_file, model_name, name):
+def generate_bracket(selected_model=None, use_round_weight=True, name="bracket"):
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
 
@@ -40,12 +41,15 @@ def generate_bracket(output_file, model_name, name):
     # Add handlers to the logger
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
-    # training data: 2022-2024 tournaments
-    # test data: 2025 base bracket
-    template = "templates/2025.csv"
+    # training data: 2022-2025 tournaments
+    # test data: 2026 base bracket
+    template = "templates/2026.csv"
     final_training = pd.read_csv("data/train.csv", index_col=0)
     #apply round score to final_training
-    values = {'First Four': 0.5, 'R1': 1, 'R2': 2, 'Sweet 16': 4, 'Elite 8': 8, 'Final 4': 16, 'Championship': 32}
+    if use_round_weight:
+        values = {'First Four': 0.5, 'R1': 1, 'R2': 2, 'Sweet 16': 4, 'Elite 8': 8, 'Final 4': 16, 'Championship': 32}
+    else:
+        values = {'First Four': 1, 'R1': 1, 'R2': 1, 'Sweet 16': 1, 'Elite 8': 1, 'Final 4': 1, 'Championship': 1}
     final_training['Round Score'] = final_training['Round'].map(values)
     for row in range(len(final_training)):
         # apply flip to 50% of rows in final_training
@@ -95,235 +99,259 @@ def generate_bracket(output_file, model_name, name):
         # Test for Edey - does unweighting the rounds allow for more upsets
         #values = {'First Four': 1, 'R1': 1, 'R2': 1, 'Sweet 16': 1, 'Elite 8': 1, 'Final 4': 1, 'Championship': 1}
 
-        kn = KNeighborsRegressor(n_neighbors=kn_params[par])
-        train_x = ft_train_x.drop('Round', axis=1)
-        # print NaN values in train_x
-        kn.fit(train_x, ft_train_y)
+        if selected_model in (None, "KNeighbors"):
+            kn = KNeighborsRegressor(n_neighbors=kn_params[par])
+            train_x = ft_train_x.drop('Round', axis=1)
+            # print NaN values in train_x
+            kn.fit(train_x, ft_train_y)
 
-        kn_correct = 0
-        kn_game_value = 0
-        for i in range(len(ft_test_x)):
-            data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
-            #print(data)
-            round = data[0][0]
-            rv = values[round]
-            pred = kn.predict([data[0][1:]])[0]
-            res = ft_test_y.iloc[i].values
-            #print(pred, res)
-            if pred[0] < pred[1] and res[0] < res[1]:
-                kn_correct += rv
-            elif pred[0] >= pred[1] and res[0] >= res[1]:
-                kn_correct += rv
-            kn_game_value += rv
-        #print("K Neighbors Regressor accuracy: ", float(kn_correct / kn_game_value))
-        kscore += float(kn_correct / kn_game_value) 
+            kn_correct = 0
+            kn_game_value = 0
+            for i in range(len(ft_test_x)):
+                data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
+                #print(data)
+                round = data[0][0]
+                rv = values[round]
+                pred = kn.predict([data[0][1:]])[0]
+                res = ft_test_y.iloc[i].values
+                #print(pred, res)
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    kn_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    kn_correct += rv
+                kn_game_value += rv
+            #print("K Neighbors Regressor accuracy: ", float(kn_correct / kn_game_value))
+            kscore += float(kn_correct / kn_game_value)
 
-        knv_correct = 0
-        knv_game_value = 0
-        for i in range(len(ft_val_x)):
-            data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
-            round = data[0][0]
-            rv = values[round]
-            pred = kn.predict([data[0][1:]])[0]
-            res = ft_val_y.iloc[i].values
-            #print(pred, res)
-            if pred[0] < pred[1] and res[0] < res[1]:
-                knv_correct += rv
-            elif pred[0] >= pred[1] and res[0] >= res[1]:
-                knv_correct += rv
-            knv_game_value += rv
-        knscore = float(knv_correct / knv_game_value)
-        if kn_best == None or knscore > kn_best[1]:
-            kn_best = (kn_params[par], knscore)
+            knv_correct = 0
+            knv_game_value = 0
+            for i in range(len(ft_val_x)):
+                data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = kn.predict([data[0][1:]])[0]
+                res = ft_val_y.iloc[i].values
+                #print(pred, res)
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    knv_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    knv_correct += rv
+                knv_game_value += rv
+            knscore = float(knv_correct / knv_game_value)
+            if kn_best == None or knscore > kn_best[1]:
+                kn_best = (kn_params[par], knscore)
 
-        dt = DecisionTreeRegressor(min_samples_split=dt_params[par])
-        train_x = ft_train_x.drop('Round', axis=1)
-        # train_x = ft_train_x
-        dt.fit(train_x, ft_train_y)
+        if selected_model in (None, "Decision Tree"):
+            dt = DecisionTreeRegressor(min_samples_split=dt_params[par])
+            train_x = ft_train_x.drop('Round', axis=1)
+            # train_x = ft_train_x
+            dt.fit(train_x, ft_train_y)
 
-        dt_correct = 0
-        dt_game_value = 0
-        for i in range(len(ft_test_x)):
-            data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
-            round = data[0][0]
-            rv = values[round]
-            pred = dt.predict([data[0][1:]])[0]
-            res = ft_test_y.iloc[i].values
-            #print(pred, res)
-            if pred[0] < pred[1] and res[0] < res[1]:
-                dt_correct += rv
-            elif pred[0] >= pred[1] and res[0] >= res[1]:
-                dt_correct += rv
-            dt_game_value += rv
-        #print("K Neighbors Regressor accuracy: ", float(dt_correct / dt_game_value))
-        dscore += float(dt_correct / dt_game_value)
+            dt_correct = 0
+            dt_game_value = 0
+            for i in range(len(ft_test_x)):
+                data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = dt.predict([data[0][1:]])[0]
+                res = ft_test_y.iloc[i].values
+                #print(pred, res)
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    dt_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    dt_correct += rv
+                dt_game_value += rv
+            #print("K Neighbors Regressor accuracy: ", float(dt_correct / dt_game_value))
+            dscore += float(dt_correct / dt_game_value)
 
-        dtv_correct = 0
-        dtv_game_value = 0
-        for i in range(len(ft_val_x)):
-            data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
-            round = data[0][0]
-            rv = values[round]
-            pred = dt.predict([data[0][1:]])[0]
-            res = ft_val_y.iloc[i].values
-            #print(pred, res)
-            if pred[0] < pred[1] and res[0] < res[1]:
-                dtv_correct += rv
-            elif pred[0] >= pred[1] and res[0] >= res[1]:
-                dtv_correct += rv
-            dtv_game_value += rv
-        dtscore = float(dtv_correct / dtv_game_value)
-        if dt_best == None or dtscore > dt_best[1]:
-            dt_best = (dt_params[par], dtscore)
+            dtv_correct = 0
+            dtv_game_value = 0
+            for i in range(len(ft_val_x)):
+                data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = dt.predict([data[0][1:]])[0]
+                res = ft_val_y.iloc[i].values
+                #print(pred, res)
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    dtv_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    dtv_correct += rv
+                dtv_game_value += rv
+            dtscore = float(dtv_correct / dtv_game_value)
+            if dt_best == None or dtscore > dt_best[1]:
+                dt_best = (dt_params[par], dtscore)
         
-        la = Lasso(alpha = la_params[par])
-        train_x = ft_train_x.drop('Round', axis=1)
-        # train_x = ft_train_x
-        la.fit(train_x, ft_train_y)
+        if selected_model in (None, "Lasso"):
+            la = Lasso(alpha = la_params[par])
+            train_x = ft_train_x.drop('Round', axis=1)
+            # train_x = ft_train_x
+            la.fit(train_x, ft_train_y)
 
-        la_correct = 0
-        la_game_value = 0
-        for i in range(len(ft_test_x)):
-            data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
-            round = data[0][0]
-            rv = values[round]
-            pred = la.predict([data[0][1:]])[0]
-            res = ft_test_y.iloc[i].values
-            #print(pred, res)
-            if pred[0] < pred[1] and res[0] < res[1]:
-                la_correct += rv
-            elif pred[0] >= pred[1] and res[0] >= res[1]:
-                la_correct += rv
-            la_game_value += rv
-        #print("Lasso Regressor accuracy: ", float(la_correct / la_game_value))
-        ascore += float(la_correct / la_game_value)
+            la_correct = 0
+            la_game_value = 0
+            for i in range(len(ft_test_x)):
+                data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = la.predict([data[0][1:]])[0]
+                res = ft_test_y.iloc[i].values
+                #print(pred, res)
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    la_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    la_correct += rv
+                la_game_value += rv
+            #print("Lasso Regressor accuracy: ", float(la_correct / la_game_value))
+            ascore += float(la_correct / la_game_value)
 
-        lav_correct = 0
-        lav_game_value = 0
-        for i in range(len(ft_val_x)):
-            data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
-            round = data[0][0]
-            rv = values[round]
-            pred = la.predict([data[0][1:]])[0]
-            res = ft_val_y.iloc[i].values
-            #print(pred, res)
-            if pred[0] < pred[1] and res[0] < res[1]:
-                lav_correct += rv
-            elif pred[0] >= pred[1] and res[0] >= res[1]:
-                lav_correct += rv
-            lav_game_value += rv
-        lascore = float(lav_correct / lav_game_value)
-        if la_best == None or lascore > la_best[1]:
-            la_best = (la_params[par], lascore)
+            lav_correct = 0
+            lav_game_value = 0
+            for i in range(len(ft_val_x)):
+                data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = la.predict([data[0][1:]])[0]
+                res = ft_val_y.iloc[i].values
+                #print(pred, res)
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    lav_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    lav_correct += rv
+                lav_game_value += rv
+            lascore = float(lav_correct / lav_game_value)
+            if la_best == None or lascore > la_best[1]:
+                la_best = (la_params[par], lascore)
 
-        rf = RandomForestRegressor(min_samples_split=rf_params[par])
-        train_x = ft_train_x.drop('Round', axis=1)
-        # train_x = ft_train_x
-        rf.fit(train_x, ft_train_y)
+        if selected_model in (None, "Random Forest"):
+            rf = RandomForestRegressor(min_samples_split=rf_params[par])
+            train_x = ft_train_x.drop('Round', axis=1)
+            # train_x = ft_train_x
+            rf.fit(train_x, ft_train_y)
 
-        rf_correct = 0
-        rf_game_value = 0
-        for i in range(len(ft_test_x)):
-            data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
-            round = data[0][0]
-            rv = values[round]
-            pred = rf.predict([data[0][1:]])[0]
-            res = ft_test_y.iloc[i].values
-            if pred[0] < pred[1] and res[0] < res[1]:
-                rf_correct += rv
-            elif pred[0] >= pred[1] and res[0] >= res[1]:
-                rf_correct += rv
-            rf_game_value += rv
-        #print("Random Forest Regressor accuracy: ", float(rf_correct / rf_game_value))
-        rscore += float(rf_correct / rf_game_value)
+            rf_correct = 0
+            rf_game_value = 0
+            for i in range(len(ft_test_x)):
+                data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = rf.predict([data[0][1:]])[0]
+                res = ft_test_y.iloc[i].values
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    rf_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    rf_correct += rv
+                rf_game_value += rv
+            #print("Random Forest Regressor accuracy: ", float(rf_correct / rf_game_value))
+            rscore += float(rf_correct / rf_game_value)
 
-        rfv_correct = 0
-        rfv_game_value = 0
-        for i in range(len(ft_val_x)):
-            data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
-            round = data[0][0]
-            rv = values[round]
-            pred = rf.predict([data[0][1:]])[0]
-            res = ft_val_y.iloc[i].values
-            if pred[0] < pred[1] and res[0] < res[1]:
-                rfv_correct += rv
-            elif pred[0] >= pred[1] and res[0] >= res[1]:
-                rfv_correct += rv
-            rfv_game_value += rv
-        rfscore = float(rfv_correct / rfv_game_value)
-        if rf_best == None or rfscore > rf_best[1]:
-            rf_best = (rf_params[par], rfscore)
+            rfv_correct = 0
+            rfv_game_value = 0
+            for i in range(len(ft_val_x)):
+                data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = rf.predict([data[0][1:]])[0]
+                res = ft_val_y.iloc[i].values
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    rfv_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    rfv_correct += rv
+                rfv_game_value += rv
+            rfscore = float(rfv_correct / rfv_game_value)
+            if rf_best == None or rfscore > rf_best[1]:
+                rf_best = (rf_params[par], rfscore)
 
-        xg = MultiOutputRegressor(GradientBoostingRegressor(learning_rate=xg_params[par]))
-        train_x = ft_train_x.drop('Round', axis=1)
-        # train_x = ft_train_x
-        xg.fit(train_x, ft_train_y)
+        if selected_model in (None, "XGBoost"):
+            xg = MultiOutputRegressor(GradientBoostingRegressor(learning_rate=xg_params[par]))
+            train_x = ft_train_x.drop('Round', axis=1)
+            # train_x = ft_train_x
+            xg.fit(train_x, ft_train_y)
 
-        xg_correct = 0
-        xg_game_value = 0
-        for i in range(len(ft_test_x)):
-            data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
-            round = data[0][0]
-            rv = values[round]
-            pred = xg.predict([data[0][1:]])[0]
-            res = ft_test_y.iloc[i].values
-            if pred[0] < pred[1] and res[0] < res[1]:
-                xg_correct += rv
-            elif pred[0] >= pred[1] and res[0] >= res[1]:
-                xg_correct += rv
-            xg_game_value += rv
-        #print("Random Forest Regressor accuracy: ", float(rf_correct / rf_game_value))
-        xscore += float(xg_correct / xg_game_value)
+            xg_correct = 0
+            xg_game_value = 0
+            for i in range(len(ft_test_x)):
+                data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = xg.predict([data[0][1:]])[0]
+                res = ft_test_y.iloc[i].values
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    xg_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    xg_correct += rv
+                xg_game_value += rv
+            #print("Random Forest Regressor accuracy: ", float(rf_correct / rf_game_value))
+            xscore += float(xg_correct / xg_game_value)
 
-        xgv_correct = 0
-        xgv_game_value = 0
-        for i in range(len(ft_val_x)):
-            data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
-            round = data[0][0]
-            rv = values[round]
-            pred = xg.predict([data[0][1:]])[0]
-            res = ft_val_y.iloc[i].values
-            if pred[0] < pred[1] and res[0] < res[1]:
-                xgv_correct += rv
-            elif pred[0] >= pred[1] and res[0] >= res[1]:
-                xgv_correct += rv
-            xgv_game_value += rv
-        xgscore = float(xgv_correct / xgv_game_value)
-        if xg_best == None or xgscore > xg_best[1]:
-            xg_best = (xg_params[par], xgscore)
+            xgv_correct = 0
+            xgv_game_value = 0
+            for i in range(len(ft_val_x)):
+                data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = xg.predict([data[0][1:]])[0]
+                res = ft_val_y.iloc[i].values
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    xgv_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    xgv_correct += rv
+                xgv_game_value += rv
+            xgscore = float(xgv_correct / xgv_game_value)
+            if xg_best == None or xgscore > xg_best[1]:
+                xg_best = (xg_params[par], xgscore)
 
-    logger.info(f"K Neighbors Regressor average accuracy: {float(kscore/5)}")
-    logger.info(f"Decision Tree Regressor average accuracy: {float(dscore/5)}")
-    logger.info(f"Lasso Regressor average accuracy: {float(ascore/5)}")
-    logger.info(f"Random Forest average accuracy: {float(rscore/5)}")
-    logger.info(f"XGBoost average accuracy: {float(xscore/5)}")
+    if selected_model in (None, "KNeighbors"):
+        logger.info(f"K Neighbors Regressor average accuracy: {float(kscore/5)}")
+    if selected_model in (None, "Decision Tree"):
+        logger.info(f"Decision Tree Regressor average accuracy: {float(dscore/5)}")
+    if selected_model in (None, "Lasso"):
+        logger.info(f"Lasso Regressor average accuracy: {float(ascore/5)}")
+    if selected_model in (None, "Random Forest"):
+        logger.info(f"Random Forest average accuracy: {float(rscore/5)}")
+    if selected_model in (None, "XGBoost"):
+        logger.info(f"XGBoost average accuracy: {float(xscore/5)}")
 
-    if max(dscore, kscore, rscore, ascore, xscore) == rscore:
-        logger.info("Now using random forest regression on the 2024 bracket!")
-        logger.info(f"samples: {rf_best[0]}")
-        model = RandomForestRegressor(min_samples_split=rf_best[0])
-    elif max(dscore, kscore, rscore, ascore, xscore) == kscore:
-        logger.info("Now using k neighbors regression on the 2024 bracket!")
-        logger.info(f"neighbors: {kn_best[0]}")
-        model = KNeighborsRegressor(n_neighbors=kn_best[0])
-    elif max(dscore, kscore, rscore, ascore, xscore) == ascore:
-        logger.info("Now using lasso regression on the 2024 bracket!")
-        logger.info(f"alpha: {la_best[0]}")
-        model = Lasso(alpha = la_best[0])
-    elif max(dscore, kscore, rscore, ascore, xscore) == dscore:
-        logger.info("Now using decision tree regression on the 2024 bracket!")
-        logger.info(f"samples: {dt_best[0]}")
-        model = DecisionTreeRegressor(min_samples_split=dt_best[0])
+    model_map = {
+        "Random Forest": (RandomForestRegressor, rf_best, lambda p: {"min_samples_split": p}),
+        "KNeighbors": (KNeighborsRegressor, kn_best, lambda p: {"n_neighbors": p}),
+        "Lasso": (Lasso, la_best, lambda p: {"alpha": p}),
+        "Decision Tree": (DecisionTreeRegressor, dt_best, lambda p: {"min_samples_split": p}),
+        "XGBoost": (None, xg_best, lambda p: {"learning_rate": p}),
+    }
+
+    if selected_model in model_map:
+        cls, best, kwargs_fn = model_map[selected_model]
+        if selected_model == "XGBoost":
+            model = MultiOutputRegressor(GradientBoostingRegressor(**kwargs_fn(xg_best[0])))
+        else:
+            model = cls(**kwargs_fn(best[0]))
+        logger.info(f"Using {selected_model} with params: {best}")
     else:
-        logger.info("Now using xgboost regression on the 2024 bracket!")
-        logger.info(f"learning_rate: {xg_best[0]}")
-        model = MultiOutputRegressor(GradientBoostingRegressor(learning_rate=xg_best[0]))
+        # auto-select best from all trained models
+        best_score = max(dscore, kscore, rscore, ascore, xscore)
+        if best_score == rscore:
+            model = RandomForestRegressor(min_samples_split=rf_best[0])
+            logger.info(f"Auto-selected Random Forest with params: {rf_best}")
+        elif best_score == kscore:
+            model = KNeighborsRegressor(n_neighbors=kn_best[0])
+            logger.info(f"Auto-selected KNeighbors with params: {kn_best}")
+        elif best_score == ascore:
+            model = Lasso(alpha=la_best[0])
+            logger.info(f"Auto-selected Lasso with params: {la_best}")
+        elif best_score == dscore:
+            model = DecisionTreeRegressor(min_samples_split=dt_best[0])
+            logger.info(f"Auto-selected Decision Tree with params: {dt_best}")
+        else:
+            model = MultiOutputRegressor(GradientBoostingRegressor(learning_rate=xg_best[0]))
+            logger.info(f"Auto-selected XGBoost with params: {xg_best}")
 
     data_x = data_x.drop('Round', axis=1)
     model.fit(data_x, data_y)
     bracket = final_test
     print(bracket.columns)
     
+    '''
     # First Four - Alabama State vs Saint Francis
     firstfour_1 = bracket.iloc[0][x_vars]
     ff1_pred = model.predict(np.asarray(firstfour_1).reshape(1, -1))[0]
@@ -422,8 +450,9 @@ def generate_bracket(output_file, model_name, name):
         #bracket.iat[12, bracket.columns.get_loc('Wins 2')] = wins
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[8, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[1][['Win Pct 1']].values[0]
+    '''
 
-    # First Four - American vs Mount St. Mary's
+    # First Four - Prairie View vs Lehigh
     firstfour_3 = bracket.iloc[2][x_vars]
     ff3_pred = model.predict(np.asarray(firstfour_3).reshape(1, -1))[0]
     ff3_team1 = bracket.iloc[2][['Team 1']]
@@ -437,20 +466,20 @@ def generate_bracket(output_file, model_name, name):
         if int(ff3_pred[0]) == int(ff3_pred[1]):
             bracket.iat[2, bracket.columns.get_loc('Score 2')] = int(ff3_pred[1]) + 1
         bracket.iat[2, bracket.columns.get_loc('Winner')] = ff3_team2.values[0]
-        bracket.iat[20, bracket.columns.get_loc('Team 2')] = ff3_team2.values[0]
+        bracket.iat[12, bracket.columns.get_loc('Team 2')] = ff3_team2.values[0]
         gp = bracket.iloc[2][['GP 2']].values[0] + 1
-        pts_for = bracket.iloc[2][['Points 2']].values[0] + int(ff1_pred[1])
-        pts_ag = bracket.iloc[2][['Points Allowed 2']].values[0] + int(ff1_pred[0])
-        bracket.iat[20, bracket.columns.get_loc('GP 2')] = gp
-        bracket.iat[20, bracket.columns.get_loc('Points 2')] = pts_for
-        bracket.iat[20, bracket.columns.get_loc('Points Allowed 2')] = pts_ag
-        bracket.iat[20, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
-        bracket.iat[20, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
-        bracket.iat[20, bracket.columns.get_loc('3P 2')] = bracket.iloc[2][['3P 2']].values[0]
-        bracket.iat[20, bracket.columns.get_loc('TO 2')] = bracket.iloc[2][['TO 2']].values[0]
+        pts_for = bracket.iloc[2][['Points 2']].values[0] + int(ff3_pred[1])
+        pts_ag = bracket.iloc[2][['Points Allowed 2']].values[0] + int(ff3_pred[0])
+        bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
+        bracket.iat[12, bracket.columns.get_loc('Points 2')] = pts_for
+        bracket.iat[12, bracket.columns.get_loc('Points Allowed 2')] = pts_ag
+        bracket.iat[12, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
+        bracket.iat[12, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
+        bracket.iat[12, bracket.columns.get_loc('3P 2')] = bracket.iloc[2][['3P 2']].values[0]
+        bracket.iat[12, bracket.columns.get_loc('TO 2')] = bracket.iloc[2][['TO 2']].values[0]
         #bracket.iat[12, bracket.columns.get_loc('Wins 2')] = wins
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
-        bracket.iat[20, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[2][['Win Pct 2']].values[0]
+        bracket.iat[12, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[2][['Win Pct 2']].values[0]
 
     else:
         #wins = int(bracket.iloc[2][['Wins 1']].values[0]) + 1
@@ -459,20 +488,20 @@ def generate_bracket(output_file, model_name, name):
         bracket.iat[2, bracket.columns.get_loc('Winner')] = ff3_team1.values[0]
         if int(ff3_pred[0]) == int(ff3_pred[1]):
             bracket.iat[2, bracket.columns.get_loc('Score 1')] = int(ff3_pred[0]) + 1
-        bracket.iat[20, bracket.columns.get_loc('Team 2')] = ff3_team1.values[0]
+        bracket.iat[12, bracket.columns.get_loc('Team 2')] = ff3_team1.values[0]
         gp = bracket.iloc[2][['GP 1']].values[0] + 1
-        pts_for = bracket.iloc[2][['Points 1']].values[0] + int(ff1_pred[0])
-        pts_ag = bracket.iloc[2][['Points Allowed 1']].values[0] + int(ff1_pred[1])
-        bracket.iat[20, bracket.columns.get_loc('GP 2')] = gp
-        bracket.iat[20, bracket.columns.get_loc('Points 2')] = pts_for
-        bracket.iat[20, bracket.columns.get_loc('Points Allowed 2')] = pts_ag
-        bracket.iat[20, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
-        bracket.iat[20, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
-        bracket.iat[20, bracket.columns.get_loc('3P 2')] = bracket.iloc[2][['3P 1']].values[0]    
-        bracket.iat[20, bracket.columns.get_loc('TO 2')] = bracket.iloc[2][['TO 1']].values[0]       
+        pts_for = bracket.iloc[2][['Points 1']].values[0] + int(ff3_pred[0])
+        pts_ag = bracket.iloc[2][['Points Allowed 1']].values[0] + int(ff3_pred[1])
+        bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
+        bracket.iat[12, bracket.columns.get_loc('Points 2')] = pts_for
+        bracket.iat[12, bracket.columns.get_loc('Points Allowed 2')] = pts_ag
+        bracket.iat[12, bracket.columns.get_loc('Offense 2')] = recalculate_efficiency(pts_for, gp)
+        bracket.iat[12, bracket.columns.get_loc('Defense 2')] = recalculate_efficiency(pts_ag, gp)
+        bracket.iat[12, bracket.columns.get_loc('3P 2')] = bracket.iloc[2][['3P 1']].values[0]    
+        bracket.iat[12, bracket.columns.get_loc('TO 2')] = bracket.iloc[2][['TO 1']].values[0]       
         #bracket.iat[12, bracket.columns.get_loc('Wins 2')] = wins
         #bracket.iat[12, bracket.columns.get_loc('GP 2')] = gp
-        bracket.iat[20, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[2][['Win Pct 1']].values[0]
+        bracket.iat[12, bracket.columns.get_loc('Win Pct 2')] = bracket.iloc[2][['Win Pct 1']].values[0]
 
     # First Four - Texas vs Xavier
     firstfour_4 = bracket.iloc[3][x_vars]
@@ -492,8 +521,8 @@ def generate_bracket(output_file, model_name, name):
         bracket.iat[3, bracket.columns.get_loc('Winner')] = ff4_team2.values[0]
         bracket.iat[32, bracket.columns.get_loc('Team 2')] = ff4_team2.values[0]
         gp = bracket.iloc[3][['GP 2']].values[0] + 1
-        pts_for = bracket.iloc[3][['Points 2']].values[0] + int(ff1_pred[1])
-        pts_ag = bracket.iloc[3][['Points Allowed 2']].values[0] + int(ff1_pred[0])
+        pts_for = bracket.iloc[3][['Points 2']].values[0] + int(ff4_pred[1])
+        pts_ag = bracket.iloc[3][['Points Allowed 2']].values[0] + int(ff4_pred[0])
         bracket.iat[32, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[32, bracket.columns.get_loc('Points 2')] = pts_for
         bracket.iat[32, bracket.columns.get_loc('Points Allowed 2')] = pts_ag
@@ -513,8 +542,8 @@ def generate_bracket(output_file, model_name, name):
             bracket.iat[3, bracket.columns.get_loc('Score 1')] = int(ff4_pred[0]) + 1
         bracket.iat[32, bracket.columns.get_loc('Team 2')] = ff4_team1.values[0]
         gp = bracket.iloc[3][['GP 1']].values[0] + 1
-        pts_for = bracket.iloc[3][['Points 1']].values[0] + int(ff1_pred[0])
-        pts_ag = bracket.iloc[3][['Points Allowed 1']].values[0] + int(ff1_pred[1])
+        pts_for = bracket.iloc[3][['Points 1']].values[0] + int(ff4_pred[0])
+        pts_ag = bracket.iloc[3][['Points Allowed 1']].values[0] + int(ff4_pred[1])
         bracket.iat[32, bracket.columns.get_loc('GP 2')] = gp
         bracket.iat[32, bracket.columns.get_loc('Points 2')] = pts_for
         bracket.iat[32, bracket.columns.get_loc('Points Allowed 2')] = pts_ag
@@ -899,16 +928,20 @@ def generate_bracket(output_file, model_name, name):
                 bracket.iat[source, bracket.columns.get_loc('Score 1')] = int(cpred[0]) + 1
         logger.info(bracket.iloc[source])
 
-    #export results
-    bracket.to_excel(output_file)
-
-    #save model to pickle file
-    with open(model_name, 'wb') as f:
-        pickle.dump(model, f)
+    #export results as bytes for download
+    output = io.BytesIO()
+    bracket.to_excel(output, index=True)
+    output.seek(0)
+    return output
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Please provide the desired model name (no extension) as an argument.")
+        print("Usage: python brackets.py <model_name> [weighted]")
+        print("  model_name: anything you want")
+        print("  weighted: yes (default) | no")
     else:
         name = sys.argv[1]
-        generate_bracket("brackets/" + name + ".xlsx", "models/" + name + '.pkl', name)
+        weighted = len(sys.argv) < 3 or sys.argv[2].lower() != "no"
+        result = generate_bracket(use_round_weight=weighted, name=name)
+        with open(f"brackets/{name}.xlsx", "wb") as f:
+            f.write(result.read())
