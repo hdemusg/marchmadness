@@ -128,3 +128,1969 @@ Wins 1                       NaN
 Wins 2                       NaN
 Round Score                    1
 Name: 66, dtype: object
+2026-03-18 16:55:50,090 - brackets - INFO - Run 1
+2026-03-18 16:55:50,090 - brackets - INFO - Run 1
+2026-03-18 16:55:50,134 - brackets - INFO - Run 2
+2026-03-18 16:55:50,134 - brackets - INFO - Run 2
+2026-03-18 16:55:50,175 - brackets - INFO - Run 3
+2026-03-18 16:55:50,175 - brackets - INFO - Run 3
+2026-03-18 16:55:50,216 - brackets - INFO - Run 4
+2026-03-18 16:55:50,216 - brackets - INFO - Run 4
+2026-03-18 16:55:50,256 - brackets - INFO - Run 5
+2026-03-18 16:55:50,256 - brackets - INFO - Run 5
+2026-03-18 16:55:50,296 - brackets - INFO - XGBoost average accuracy: 0.0
+2026-03-18 16:55:50,296 - brackets - INFO - XGBoost average accuracy: 0.0
+2026-03-18 16:56:39,270 - brackets - INFO - Run 1
+2026-03-18 16:56:39,270 - brackets - INFO - Run 1
+2026-03-18 16:56:39,270 - brackets - INFO - Run 1
+2026-03-18 16:56:39,311 - brackets - INFO - Run 2
+2026-03-18 16:56:39,311 - brackets - INFO - Run 2
+2026-03-18 16:56:39,311 - brackets - INFO - Run 2
+2026-03-18 16:56:39,351 - brackets - INFO - Run 3
+2026-03-18 16:56:39,351 - brackets - INFO - Run 3
+2026-03-18 16:56:39,351 - brackets - INFO - Run 3
+2026-03-18 16:56:39,391 - brackets - INFO - Run 4
+2026-03-18 16:56:39,391 - brackets - INFO - Run 4
+2026-03-18 16:56:39,391 - brackets - INFO - Run 4
+2026-03-18 16:56:39,430 - brackets - INFO - Run 5
+2026-03-18 16:56:39,430 - brackets - INFO - Run 5
+2026-03-18 16:56:39,430 - brackets - INFO - Run 5
+2026-03-18 16:56:39,469 - brackets - INFO - XGBoost average accuracy: 0.0
+2026-03-18 16:56:39,469 - brackets - INFO - XGBoost average accuracy: 0.0
+2026-03-18 16:56:39,469 - brackets - INFO - XGBoost average accuracy: 0.0
+2026-03-18 16:56:39,469 - brackets - INFO - Using MLP with params: (0.01, 0.84472049689441)
+2026-03-18 16:56:39,469 - brackets - INFO - Using MLP with params: (0.01, 0.84472049689441)
+2026-03-18 16:56:39,469 - brackets - INFO - Using MLP with params: (0.01, 0.84472049689441)
+2026-03-18 16:56:39,633 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                      15.0
+Seed 2                      14.0
+Team 1                     Idaho
+Team 2              Wright State
+GP 1                        40.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                        11.3
+Points 1                  3112.0
+Points 2                  3123.0
+Points Allowed 1          2891.0
+Points Allowed 2          2866.0
+Offense 1                   77.8
+Offense 2                   80.1
+Defense 1                   72.3
+Defense 2                   73.5
+Win Pct 1                   60.0
+Win Pct 2                   67.6
+3P 1                        34.6
+3P 2                        36.1
+Score 1                     75.0
+Score 2                     77.0
+Winner              Wright State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:56:39,633 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                      15.0
+Seed 2                      14.0
+Team 1                     Idaho
+Team 2              Wright State
+GP 1                        40.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                        11.3
+Points 1                  3112.0
+Points 2                  3123.0
+Points Allowed 1          2891.0
+Points Allowed 2          2866.0
+Offense 1                   77.8
+Offense 2                   80.1
+Defense 1                   72.3
+Defense 2                   73.5
+Win Pct 1                   60.0
+Win Pct 2                   67.6
+3P 1                        34.6
+3P 2                        36.1
+Score 1                     75.0
+Score 2                     77.0
+Winner              Wright State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:56:39,633 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                      15.0
+Seed 2                      14.0
+Team 1                     Idaho
+Team 2              Wright State
+GP 1                        40.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                        11.3
+Points 1                  3112.0
+Points 2                  3123.0
+Points Allowed 1          2891.0
+Points Allowed 2          2866.0
+Offense 1                   77.8
+Offense 2                   80.1
+Defense 1                   72.3
+Defense 2                   73.5
+Win Pct 1                   60.0
+Win Pct 2                   67.6
+3P 1                        34.6
+3P 2                        36.1
+Score 1                     75.0
+Score 2                     77.0
+Winner              Wright State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:56:39,636 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                      15.0
+Seed 2                      14.0
+Team 1                     Idaho
+Team 2              Wright State
+GP 1                        40.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                        11.3
+Points 1                  3112.0
+Points 2                  3123.0
+Points Allowed 1          2891.0
+Points Allowed 2          2866.0
+Offense 1                   77.8
+Offense 2                   80.1
+Defense 1                   72.3
+Defense 2                   73.5
+Win Pct 1                   60.0
+Win Pct 2                   67.6
+3P 1                        34.6
+3P 2                        36.1
+Score 1                     75.0
+Score 2                     77.0
+Winner              Wright State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:56:39,636 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                      15.0
+Seed 2                      14.0
+Team 1                     Idaho
+Team 2              Wright State
+GP 1                        40.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                        11.3
+Points 1                  3112.0
+Points 2                  3123.0
+Points Allowed 1          2891.0
+Points Allowed 2          2866.0
+Offense 1                   77.8
+Offense 2                   80.1
+Defense 1                   72.3
+Defense 2                   73.5
+Win Pct 1                   60.0
+Win Pct 2                   67.6
+3P 1                        34.6
+3P 2                        36.1
+Score 1                     75.0
+Score 2                     77.0
+Winner              Wright State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:56:39,636 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                      15.0
+Seed 2                      14.0
+Team 1                     Idaho
+Team 2              Wright State
+GP 1                        40.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                        11.3
+Points 1                  3112.0
+Points 2                  3123.0
+Points Allowed 1          2891.0
+Points Allowed 2          2866.0
+Offense 1                   77.8
+Offense 2                   80.1
+Defense 1                   72.3
+Defense 2                   73.5
+Win Pct 1                   60.0
+Win Pct 2                   67.6
+3P 1                        34.6
+3P 2                        36.1
+Score 1                     75.0
+Score 2                     77.0
+Winner              Wright State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:03,678 - brackets - INFO - Run 1
+2026-03-18 16:59:03,678 - brackets - INFO - Run 1
+2026-03-18 16:59:03,678 - brackets - INFO - Run 1
+2026-03-18 16:59:03,678 - brackets - INFO - Run 1
+2026-03-18 16:59:03,692 - brackets - INFO - Run 2
+2026-03-18 16:59:03,692 - brackets - INFO - Run 2
+2026-03-18 16:59:03,692 - brackets - INFO - Run 2
+2026-03-18 16:59:03,692 - brackets - INFO - Run 2
+2026-03-18 16:59:03,702 - brackets - INFO - Run 3
+2026-03-18 16:59:03,702 - brackets - INFO - Run 3
+2026-03-18 16:59:03,702 - brackets - INFO - Run 3
+2026-03-18 16:59:03,702 - brackets - INFO - Run 3
+2026-03-18 16:59:03,712 - brackets - INFO - Run 4
+2026-03-18 16:59:03,712 - brackets - INFO - Run 4
+2026-03-18 16:59:03,712 - brackets - INFO - Run 4
+2026-03-18 16:59:03,712 - brackets - INFO - Run 4
+2026-03-18 16:59:03,722 - brackets - INFO - Run 5
+2026-03-18 16:59:03,722 - brackets - INFO - Run 5
+2026-03-18 16:59:03,722 - brackets - INFO - Run 5
+2026-03-18 16:59:03,722 - brackets - INFO - Run 5
+2026-03-18 16:59:03,731 - brackets - INFO - Decision Tree Regressor average accuracy: 0.5902788342957755
+2026-03-18 16:59:03,731 - brackets - INFO - Decision Tree Regressor average accuracy: 0.5902788342957755
+2026-03-18 16:59:03,731 - brackets - INFO - Decision Tree Regressor average accuracy: 0.5902788342957755
+2026-03-18 16:59:03,731 - brackets - INFO - Decision Tree Regressor average accuracy: 0.5902788342957755
+2026-03-18 16:59:03,731 - brackets - INFO - Using Decision Tree with params: (5, 0.65)
+2026-03-18 16:59:03,731 - brackets - INFO - Using Decision Tree with params: (5, 0.65)
+2026-03-18 16:59:03,731 - brackets - INFO - Using Decision Tree with params: (5, 0.65)
+2026-03-18 16:59:03,731 - brackets - INFO - Using Decision Tree with params: (5, 0.65)
+2026-03-18 16:59:03,888 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       9.0
+Team 1                      Duke
+Team 2                Utah State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.6
+Points 1                  3252.0
+Points 2                  3210.0
+Points Allowed 1          2532.0
+Points Allowed 2          2753.0
+Offense 1                   83.4
+Offense 2                   82.3
+Defense 1                   64.9
+Defense 2                   70.6
+Win Pct 1                   94.1
+Win Pct 2                   82.4
+3P 1                        35.1
+3P 2                        35.8
+Score 1                     92.0
+Score 2                     87.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:03,888 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       9.0
+Team 1                      Duke
+Team 2                Utah State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.6
+Points 1                  3252.0
+Points 2                  3210.0
+Points Allowed 1          2532.0
+Points Allowed 2          2753.0
+Offense 1                   83.4
+Offense 2                   82.3
+Defense 1                   64.9
+Defense 2                   70.6
+Win Pct 1                   94.1
+Win Pct 2                   82.4
+3P 1                        35.1
+3P 2                        35.8
+Score 1                     92.0
+Score 2                     87.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:03,888 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       9.0
+Team 1                      Duke
+Team 2                Utah State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.6
+Points 1                  3252.0
+Points 2                  3210.0
+Points Allowed 1          2532.0
+Points Allowed 2          2753.0
+Offense 1                   83.4
+Offense 2                   82.3
+Defense 1                   64.9
+Defense 2                   70.6
+Win Pct 1                   94.1
+Win Pct 2                   82.4
+3P 1                        35.1
+3P 2                        35.8
+Score 1                     92.0
+Score 2                     87.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:03,888 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       9.0
+Team 1                      Duke
+Team 2                Utah State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.6
+Points 1                  3252.0
+Points 2                  3210.0
+Points Allowed 1          2532.0
+Points Allowed 2          2753.0
+Offense 1                   83.4
+Offense 2                   82.3
+Defense 1                   64.9
+Defense 2                   70.6
+Win Pct 1                   94.1
+Win Pct 2                   82.4
+3P 1                        35.1
+3P 2                        35.8
+Score 1                     92.0
+Score 2                     87.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:03,891 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       9.0
+Team 1                      Duke
+Team 2                Utah State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.6
+Points 1                  3252.0
+Points 2                  3210.0
+Points Allowed 1          2532.0
+Points Allowed 2          2753.0
+Offense 1                   83.4
+Offense 2                   82.3
+Defense 1                   64.9
+Defense 2                   70.6
+Win Pct 1                   94.1
+Win Pct 2                   82.4
+3P 1                        35.1
+3P 2                        35.8
+Score 1                     92.0
+Score 2                     87.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:03,891 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       9.0
+Team 1                      Duke
+Team 2                Utah State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.6
+Points 1                  3252.0
+Points 2                  3210.0
+Points Allowed 1          2532.0
+Points Allowed 2          2753.0
+Offense 1                   83.4
+Offense 2                   82.3
+Defense 1                   64.9
+Defense 2                   70.6
+Win Pct 1                   94.1
+Win Pct 2                   82.4
+3P 1                        35.1
+3P 2                        35.8
+Score 1                     92.0
+Score 2                     87.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:03,891 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       9.0
+Team 1                      Duke
+Team 2                Utah State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.6
+Points 1                  3252.0
+Points 2                  3210.0
+Points Allowed 1          2532.0
+Points Allowed 2          2753.0
+Offense 1                   83.4
+Offense 2                   82.3
+Defense 1                   64.9
+Defense 2                   70.6
+Win Pct 1                   94.1
+Win Pct 2                   82.4
+3P 1                        35.1
+3P 2                        35.8
+Score 1                     92.0
+Score 2                     87.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:03,891 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       9.0
+Team 1                      Duke
+Team 2                Utah State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.6
+Points 1                  3252.0
+Points 2                  3210.0
+Points Allowed 1          2532.0
+Points Allowed 2          2753.0
+Offense 1                   83.4
+Offense 2                   82.3
+Defense 1                   64.9
+Defense 2                   70.6
+Win Pct 1                   94.1
+Win Pct 2                   82.4
+3P 1                        35.1
+3P 2                        35.8
+Score 1                     92.0
+Score 2                     87.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:31,440 - brackets - INFO - Run 1
+2026-03-18 16:59:31,440 - brackets - INFO - Run 1
+2026-03-18 16:59:31,440 - brackets - INFO - Run 1
+2026-03-18 16:59:31,440 - brackets - INFO - Run 1
+2026-03-18 16:59:31,440 - brackets - INFO - Run 1
+2026-03-18 16:59:31,484 - brackets - INFO - Run 2
+2026-03-18 16:59:31,484 - brackets - INFO - Run 2
+2026-03-18 16:59:31,484 - brackets - INFO - Run 2
+2026-03-18 16:59:31,484 - brackets - INFO - Run 2
+2026-03-18 16:59:31,484 - brackets - INFO - Run 2
+2026-03-18 16:59:31,528 - brackets - INFO - Run 3
+2026-03-18 16:59:31,528 - brackets - INFO - Run 3
+2026-03-18 16:59:31,528 - brackets - INFO - Run 3
+2026-03-18 16:59:31,528 - brackets - INFO - Run 3
+2026-03-18 16:59:31,528 - brackets - INFO - Run 3
+2026-03-18 16:59:31,569 - brackets - INFO - Run 4
+2026-03-18 16:59:31,569 - brackets - INFO - Run 4
+2026-03-18 16:59:31,569 - brackets - INFO - Run 4
+2026-03-18 16:59:31,569 - brackets - INFO - Run 4
+2026-03-18 16:59:31,569 - brackets - INFO - Run 4
+2026-03-18 16:59:31,611 - brackets - INFO - Run 5
+2026-03-18 16:59:31,611 - brackets - INFO - Run 5
+2026-03-18 16:59:31,611 - brackets - INFO - Run 5
+2026-03-18 16:59:31,611 - brackets - INFO - Run 5
+2026-03-18 16:59:31,611 - brackets - INFO - Run 5
+2026-03-18 16:59:31,651 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:31,651 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:31,651 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:31,651 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:31,651 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:31,652 - brackets - INFO - Using MLP with params: (0.0001, 0.9065934065934066)
+2026-03-18 16:59:31,652 - brackets - INFO - Using MLP with params: (0.0001, 0.9065934065934066)
+2026-03-18 16:59:31,652 - brackets - INFO - Using MLP with params: (0.0001, 0.9065934065934066)
+2026-03-18 16:59:31,652 - brackets - INFO - Using MLP with params: (0.0001, 0.9065934065934066)
+2026-03-18 16:59:31,652 - brackets - INFO - Using MLP with params: (0.0001, 0.9065934065934066)
+2026-03-18 16:59:31,816 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3017.0
+Points 2                  3185.0
+Points Allowed 1          2508.0
+Points Allowed 2          2611.0
+Offense 1                   77.4
+Offense 2                   81.7
+Defense 1                   64.3
+Defense 2                   66.9
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     78.0
+Score 2                     85.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:31,816 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3017.0
+Points 2                  3185.0
+Points Allowed 1          2508.0
+Points Allowed 2          2611.0
+Offense 1                   77.4
+Offense 2                   81.7
+Defense 1                   64.3
+Defense 2                   66.9
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     78.0
+Score 2                     85.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:31,816 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3017.0
+Points 2                  3185.0
+Points Allowed 1          2508.0
+Points Allowed 2          2611.0
+Offense 1                   77.4
+Offense 2                   81.7
+Defense 1                   64.3
+Defense 2                   66.9
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     78.0
+Score 2                     85.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:31,816 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3017.0
+Points 2                  3185.0
+Points Allowed 1          2508.0
+Points Allowed 2          2611.0
+Offense 1                   77.4
+Offense 2                   81.7
+Defense 1                   64.3
+Defense 2                   66.9
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     78.0
+Score 2                     85.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:31,816 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3017.0
+Points 2                  3185.0
+Points Allowed 1          2508.0
+Points Allowed 2          2611.0
+Offense 1                   77.4
+Offense 2                   81.7
+Defense 1                   64.3
+Defense 2                   66.9
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     78.0
+Score 2                     85.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:31,820 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3017.0
+Points 2                  3185.0
+Points Allowed 1          2508.0
+Points Allowed 2          2611.0
+Offense 1                   77.4
+Offense 2                   81.7
+Defense 1                   64.3
+Defense 2                   66.9
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     78.0
+Score 2                     85.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:31,820 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3017.0
+Points 2                  3185.0
+Points Allowed 1          2508.0
+Points Allowed 2          2611.0
+Offense 1                   77.4
+Offense 2                   81.7
+Defense 1                   64.3
+Defense 2                   66.9
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     78.0
+Score 2                     85.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:31,820 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3017.0
+Points 2                  3185.0
+Points Allowed 1          2508.0
+Points Allowed 2          2611.0
+Offense 1                   77.4
+Offense 2                   81.7
+Defense 1                   64.3
+Defense 2                   66.9
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     78.0
+Score 2                     85.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:31,820 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3017.0
+Points 2                  3185.0
+Points Allowed 1          2508.0
+Points Allowed 2          2611.0
+Offense 1                   77.4
+Offense 2                   81.7
+Defense 1                   64.3
+Defense 2                   66.9
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     78.0
+Score 2                     85.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:31,820 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3017.0
+Points 2                  3185.0
+Points Allowed 1          2508.0
+Points Allowed 2          2611.0
+Offense 1                   77.4
+Offense 2                   81.7
+Defense 1                   64.3
+Defense 2                   66.9
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     78.0
+Score 2                     85.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:55,910 - brackets - INFO - Run 1
+2026-03-18 16:59:55,910 - brackets - INFO - Run 1
+2026-03-18 16:59:55,910 - brackets - INFO - Run 1
+2026-03-18 16:59:55,910 - brackets - INFO - Run 1
+2026-03-18 16:59:55,910 - brackets - INFO - Run 1
+2026-03-18 16:59:55,910 - brackets - INFO - Run 1
+2026-03-18 16:59:55,953 - brackets - INFO - Run 2
+2026-03-18 16:59:55,953 - brackets - INFO - Run 2
+2026-03-18 16:59:55,953 - brackets - INFO - Run 2
+2026-03-18 16:59:55,953 - brackets - INFO - Run 2
+2026-03-18 16:59:55,953 - brackets - INFO - Run 2
+2026-03-18 16:59:55,953 - brackets - INFO - Run 2
+2026-03-18 16:59:55,996 - brackets - INFO - Run 3
+2026-03-18 16:59:55,996 - brackets - INFO - Run 3
+2026-03-18 16:59:55,996 - brackets - INFO - Run 3
+2026-03-18 16:59:55,996 - brackets - INFO - Run 3
+2026-03-18 16:59:55,996 - brackets - INFO - Run 3
+2026-03-18 16:59:55,996 - brackets - INFO - Run 3
+2026-03-18 16:59:56,039 - brackets - INFO - Run 4
+2026-03-18 16:59:56,039 - brackets - INFO - Run 4
+2026-03-18 16:59:56,039 - brackets - INFO - Run 4
+2026-03-18 16:59:56,039 - brackets - INFO - Run 4
+2026-03-18 16:59:56,039 - brackets - INFO - Run 4
+2026-03-18 16:59:56,039 - brackets - INFO - Run 4
+2026-03-18 16:59:56,081 - brackets - INFO - Run 5
+2026-03-18 16:59:56,081 - brackets - INFO - Run 5
+2026-03-18 16:59:56,081 - brackets - INFO - Run 5
+2026-03-18 16:59:56,081 - brackets - INFO - Run 5
+2026-03-18 16:59:56,081 - brackets - INFO - Run 5
+2026-03-18 16:59:56,081 - brackets - INFO - Run 5
+2026-03-18 16:59:56,121 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:56,121 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:56,121 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:56,121 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:56,121 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:56,121 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 16:59:56,121 - brackets - INFO - Using MLP with params: (1e-05, 1.280373831775701)
+2026-03-18 16:59:56,121 - brackets - INFO - Using MLP with params: (1e-05, 1.280373831775701)
+2026-03-18 16:59:56,121 - brackets - INFO - Using MLP with params: (1e-05, 1.280373831775701)
+2026-03-18 16:59:56,121 - brackets - INFO - Using MLP with params: (1e-05, 1.280373831775701)
+2026-03-18 16:59:56,121 - brackets - INFO - Using MLP with params: (1e-05, 1.280373831775701)
+2026-03-18 16:59:56,121 - brackets - INFO - Using MLP with params: (1e-05, 1.280373831775701)
+2026-03-18 16:59:56,294 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,294 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,294 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,294 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,294 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,294 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,298 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,298 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,298 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,298 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,298 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 16:59:56,298 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       2.0
+Seed 2                       2.0
+Team 1                   Houston
+Team 2                Iowa State
+GP 1                        39.0
+GP 2                        39.0
+TO 1                         8.5
+TO 2                        10.3
+Points 1                  3004.0
+Points 2                  3180.0
+Points Allowed 1          2510.0
+Points Allowed 2          2597.0
+Offense 1                   77.0
+Offense 2                   81.5
+Defense 1                   64.4
+Defense 2                   66.6
+Win Pct 1                   82.4
+Win Pct 2                   79.4
+3P 1                        34.9
+3P 2                        38.7
+Score 1                     77.0
+Score 2                     79.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,552 - brackets - INFO - Run 1
+2026-03-18 17:01:31,552 - brackets - INFO - Run 1
+2026-03-18 17:01:31,552 - brackets - INFO - Run 1
+2026-03-18 17:01:31,552 - brackets - INFO - Run 1
+2026-03-18 17:01:31,552 - brackets - INFO - Run 1
+2026-03-18 17:01:31,552 - brackets - INFO - Run 1
+2026-03-18 17:01:31,552 - brackets - INFO - Run 1
+2026-03-18 17:01:31,596 - brackets - INFO - Run 2
+2026-03-18 17:01:31,596 - brackets - INFO - Run 2
+2026-03-18 17:01:31,596 - brackets - INFO - Run 2
+2026-03-18 17:01:31,596 - brackets - INFO - Run 2
+2026-03-18 17:01:31,596 - brackets - INFO - Run 2
+2026-03-18 17:01:31,596 - brackets - INFO - Run 2
+2026-03-18 17:01:31,596 - brackets - INFO - Run 2
+2026-03-18 17:01:31,640 - brackets - INFO - Run 3
+2026-03-18 17:01:31,640 - brackets - INFO - Run 3
+2026-03-18 17:01:31,640 - brackets - INFO - Run 3
+2026-03-18 17:01:31,640 - brackets - INFO - Run 3
+2026-03-18 17:01:31,640 - brackets - INFO - Run 3
+2026-03-18 17:01:31,640 - brackets - INFO - Run 3
+2026-03-18 17:01:31,640 - brackets - INFO - Run 3
+2026-03-18 17:01:31,682 - brackets - INFO - Run 4
+2026-03-18 17:01:31,682 - brackets - INFO - Run 4
+2026-03-18 17:01:31,682 - brackets - INFO - Run 4
+2026-03-18 17:01:31,682 - brackets - INFO - Run 4
+2026-03-18 17:01:31,682 - brackets - INFO - Run 4
+2026-03-18 17:01:31,682 - brackets - INFO - Run 4
+2026-03-18 17:01:31,682 - brackets - INFO - Run 4
+2026-03-18 17:01:31,724 - brackets - INFO - Run 5
+2026-03-18 17:01:31,724 - brackets - INFO - Run 5
+2026-03-18 17:01:31,724 - brackets - INFO - Run 5
+2026-03-18 17:01:31,724 - brackets - INFO - Run 5
+2026-03-18 17:01:31,724 - brackets - INFO - Run 5
+2026-03-18 17:01:31,724 - brackets - INFO - Run 5
+2026-03-18 17:01:31,724 - brackets - INFO - Run 5
+2026-03-18 17:01:31,764 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 17:01:31,764 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 17:01:31,764 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 17:01:31,764 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 17:01:31,764 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 17:01:31,764 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 17:01:31,764 - brackets - INFO - MLP average accuracy: 0.0
+2026-03-18 17:01:31,765 - brackets - INFO - Using MLP with params: (0.0001, 0.7630057803468208)
+2026-03-18 17:01:31,765 - brackets - INFO - Using MLP with params: (0.0001, 0.7630057803468208)
+2026-03-18 17:01:31,765 - brackets - INFO - Using MLP with params: (0.0001, 0.7630057803468208)
+2026-03-18 17:01:31,765 - brackets - INFO - Using MLP with params: (0.0001, 0.7630057803468208)
+2026-03-18 17:01:31,765 - brackets - INFO - Using MLP with params: (0.0001, 0.7630057803468208)
+2026-03-18 17:01:31,765 - brackets - INFO - Using MLP with params: (0.0001, 0.7630057803468208)
+2026-03-18 17:01:31,765 - brackets - INFO - Using MLP with params: (0.0001, 0.7630057803468208)
+2026-03-18 17:01:31,929 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,929 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,929 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,929 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,929 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,929 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,929 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,933 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,933 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,933 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,933 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,933 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,933 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:01:31,933 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       1.0
+Team 1                      Duke
+Team 2                   Arizona
+GP 1                        39.0
+GP 2                        39.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3177.0
+Points 2                  3324.0
+Points Allowed 1          2504.0
+Points Allowed 2          2721.0
+Offense 1                   81.5
+Offense 2                   85.2
+Defense 1                   64.2
+Defense 2                   69.8
+Win Pct 1                   94.1
+Win Pct 2                   94.1
+3P 1                        35.1
+3P 2                        36.0
+Score 1                     80.0
+Score 2                     76.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:05:51,117 - brackets - INFO - Run 1
+2026-03-18 17:05:51,161 - brackets - INFO - Run 2
+2026-03-18 17:05:51,204 - brackets - INFO - Run 3
+2026-03-18 17:05:51,246 - brackets - INFO - Run 4
+2026-03-18 17:05:51,288 - brackets - INFO - Run 5
+2026-03-18 17:05:51,329 - brackets - INFO - MLP average accuracy: 0.457413268081706
+2026-03-18 17:05:51,329 - brackets - INFO - Using MLP with params: (0.0001, 0.6060606060606061)
+2026-03-18 17:05:51,493 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       2.0
+Team 1                   Florida
+Team 2                Iowa State
+GP 1                        38.0
+GP 2                        39.0
+TO 1                        11.9
+TO 2                        10.3
+Points 1                  3250.0
+Points 2                  3174.0
+Points Allowed 1          2737.0
+Points Allowed 2          2595.0
+Offense 1                   85.5
+Offense 2                   81.4
+Defense 1                   72.0
+Defense 2                   66.5
+Win Pct 1                   78.8
+Win Pct 2                   79.4
+3P 1                        30.8
+3P 2                        38.7
+Score 1                     75.0
+Score 2                     80.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:05:51,495 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       2.0
+Team 1                   Florida
+Team 2                Iowa State
+GP 1                        38.0
+GP 2                        39.0
+TO 1                        11.9
+TO 2                        10.3
+Points 1                  3250.0
+Points 2                  3174.0
+Points Allowed 1          2737.0
+Points Allowed 2          2595.0
+Offense 1                   85.5
+Offense 2                   81.4
+Defense 1                   72.0
+Defense 2                   66.5
+Win Pct 1                   78.8
+Win Pct 2                   79.4
+3P 1                        30.8
+3P 2                        38.7
+Score 1                     75.0
+Score 2                     80.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:11:05,281 - brackets - INFO - Run 1
+2026-03-18 17:11:05,322 - brackets - INFO - Run 2
+2026-03-18 17:11:05,362 - brackets - INFO - Run 3
+2026-03-18 17:11:05,402 - brackets - INFO - Run 4
+2026-03-18 17:11:05,442 - brackets - INFO - Run 5
+2026-03-18 17:11:05,479 - brackets - INFO - MLP average accuracy: 0.34967852879255873
+2026-03-18 17:11:05,479 - brackets - INFO - Using MLP with params: (0.01, 0.5)
+2026-03-18 17:11:05,642 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                      15.0
+Seed 2                       2.0
+Team 1                     Idaho
+Team 2                Iowa State
+GP 1                        40.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                        10.3
+Points 1                  3123.0
+Points 2                  3170.0
+Points Allowed 1          2887.0
+Points Allowed 2          2570.0
+Offense 1                   78.1
+Offense 2                   81.3
+Defense 1                   72.2
+Defense 2                   65.9
+Win Pct 1                   60.0
+Win Pct 2                   79.4
+3P 1                        34.6
+3P 2                        38.7
+Score 1                     68.0
+Score 2                     77.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:11:05,643 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                      15.0
+Seed 2                       2.0
+Team 1                     Idaho
+Team 2                Iowa State
+GP 1                        40.0
+GP 2                        39.0
+TO 1                        10.6
+TO 2                        10.3
+Points 1                  3123.0
+Points 2                  3170.0
+Points Allowed 1          2887.0
+Points Allowed 2          2570.0
+Offense 1                   78.1
+Offense 2                   81.3
+Defense 1                   72.2
+Defense 2                   65.9
+Win Pct 1                   60.0
+Win Pct 2                   79.4
+3P 1                        34.6
+3P 2                        38.7
+Score 1                     68.0
+Score 2                     77.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                 32.0
+Name: 66, dtype: object
+2026-03-18 17:11:05,674 - brackets - INFO - Bracket generation complete.
+2026-03-18 17:12:33,624 - brackets - INFO - Run 1
+2026-03-18 17:12:33,667 - brackets - INFO - Run 2
+2026-03-18 17:12:33,709 - brackets - INFO - Run 3
+2026-03-18 17:12:33,749 - brackets - INFO - Run 4
+2026-03-18 17:12:33,789 - brackets - INFO - Run 5
+2026-03-18 17:12:33,828 - brackets - INFO - MLP average accuracy: 0.3944967385306283
+2026-03-18 17:12:33,828 - brackets - INFO - Using MLP with params: (0.1, 0.708994708994709)
+2026-03-18 17:12:33,993 - brackets - INFO - Year                           2026
+Round                  Championship
+Seed 1                         15.0
+Seed 2                         15.0
+Team 1                        Idaho
+Team 2              Tennessee State
+GP 1                           40.0
+GP 2                           37.0
+TO 1                           10.6
+TO 2                           12.2
+Points 1                     3124.0
+Points 2                     2965.0
+Points Allowed 1             2882.0
+Points Allowed 2             2703.0
+Offense 1                      78.1
+Offense 2                      80.1
+Defense 1                      72.0
+Defense 2                      73.1
+Win Pct 1                      60.0
+Win Pct 2                      71.9
+3P 1                           34.6
+3P 2                           33.1
+Score 1                        67.0
+Score 2                        74.0
+Winner              Tennessee State
+Wins 1                          NaN
+Wins 2                          NaN
+Round Score                    32.0
+Name: 66, dtype: object
+2026-03-18 17:12:33,995 - brackets - INFO - Year                           2026
+Round                  Championship
+Seed 1                         15.0
+Seed 2                         15.0
+Team 1                        Idaho
+Team 2              Tennessee State
+GP 1                           40.0
+GP 2                           37.0
+TO 1                           10.6
+TO 2                           12.2
+Points 1                     3124.0
+Points 2                     2965.0
+Points Allowed 1             2882.0
+Points Allowed 2             2703.0
+Offense 1                      78.1
+Offense 2                      80.1
+Defense 1                      72.0
+Defense 2                      73.1
+Win Pct 1                      60.0
+Win Pct 2                      71.9
+3P 1                           34.6
+3P 2                           33.1
+Score 1                        67.0
+Score 2                        74.0
+Winner              Tennessee State
+Wins 1                          NaN
+Wins 2                          NaN
+Round Score                    32.0
+Name: 66, dtype: object
+2026-03-18 17:12:34,024 - brackets - INFO - Bracket generation complete.
+2026-03-18 17:13:53,182 - brackets - INFO - Run 1
+2026-03-18 17:13:53,229 - brackets - INFO - Run 2
+2026-03-18 17:13:53,275 - brackets - INFO - Run 3
+2026-03-18 17:13:53,320 - brackets - INFO - Run 4
+2026-03-18 17:13:53,364 - brackets - INFO - Run 5
+2026-03-18 17:13:53,407 - brackets - INFO - MLP average accuracy: 0.5933333333333333
+2026-03-18 17:13:53,407 - brackets - INFO - Using MLP with params: (0.01, 0.6451612903225806)
+2026-03-18 17:13:53,571 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       5.0
+Team 1                      Duke
+Team 2                Texas Tech
+GP 1                        39.0
+GP 2                        37.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3172.0
+Points 2                  2964.0
+Points Allowed 1          2511.0
+Points Allowed 2          2709.0
+Offense 1                   81.3
+Offense 2                   80.1
+Defense 1                   64.4
+Defense 2                   73.2
+Win Pct 1                   94.1
+Win Pct 2                   68.8
+3P 1                        35.1
+3P 2                        39.3
+Score 1                     76.0
+Score 2                     75.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                    1
+Name: 66, dtype: object
+2026-03-18 17:13:53,573 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                       1.0
+Seed 2                       5.0
+Team 1                      Duke
+Team 2                Texas Tech
+GP 1                        39.0
+GP 2                        37.0
+TO 1                        10.5
+TO 2                        10.8
+Points 1                  3172.0
+Points 2                  2964.0
+Points Allowed 1          2511.0
+Points Allowed 2          2709.0
+Offense 1                   81.3
+Offense 2                   80.1
+Defense 1                   64.4
+Defense 2                   73.2
+Win Pct 1                   94.1
+Win Pct 2                   68.8
+3P 1                        35.1
+3P 2                        39.3
+Score 1                     76.0
+Score 2                     75.0
+Winner                      Duke
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                    1
+Name: 66, dtype: object
+2026-03-18 17:13:53,605 - brackets - INFO - Bracket generation complete.
+2026-03-18 17:14:00,905 - brackets - INFO - Run 1
+2026-03-18 17:14:00,951 - brackets - INFO - Run 2
+2026-03-18 17:14:00,996 - brackets - INFO - Run 3
+2026-03-18 17:14:01,041 - brackets - INFO - Run 4
+2026-03-18 17:14:01,086 - brackets - INFO - Run 5
+2026-03-18 17:14:01,129 - brackets - INFO - MLP average accuracy: 0.5666666666666667
+2026-03-18 17:14:01,129 - brackets - INFO - Using MLP with params: (0.05, 0.6774193548387096)
+2026-03-18 17:14:01,294 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                      10.0
+Seed 2                       2.0
+Team 1                 Texas A&M
+Team 2                Iowa State
+GP 1                        37.0
+GP 2                        39.0
+TO 1                        10.8
+TO 2                        10.3
+Points 1                  3193.0
+Points 2                  3169.0
+Points Allowed 1          2918.0
+Points Allowed 2          2595.0
+Offense 1                   86.3
+Offense 2                   81.3
+Defense 1                   78.9
+Defense 2                   66.5
+Win Pct 1                   65.6
+Win Pct 2                   79.4
+3P 1                        36.2
+3P 2                        38.7
+Score 1                     73.0
+Score 2                     76.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                    1
+Name: 66, dtype: object
+2026-03-18 17:14:01,295 - brackets - INFO - Year                        2026
+Round               Championship
+Seed 1                      10.0
+Seed 2                       2.0
+Team 1                 Texas A&M
+Team 2                Iowa State
+GP 1                        37.0
+GP 2                        39.0
+TO 1                        10.8
+TO 2                        10.3
+Points 1                  3193.0
+Points 2                  3169.0
+Points Allowed 1          2918.0
+Points Allowed 2          2595.0
+Offense 1                   86.3
+Offense 2                   81.3
+Defense 1                   78.9
+Defense 2                   66.5
+Win Pct 1                   65.6
+Win Pct 2                   79.4
+3P 1                        36.2
+3P 2                        38.7
+Score 1                     73.0
+Score 2                     76.0
+Winner                Iowa State
+Wins 1                       NaN
+Wins 2                       NaN
+Round Score                    1
+Name: 66, dtype: object
+2026-03-18 17:14:01,326 - brackets - INFO - Bracket generation complete.

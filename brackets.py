@@ -26,7 +26,7 @@ def recalculate_efficiency(points, games):
     #return efficiency rounded to the nearest tenth
     return round(efficiency, 1)
 
-def generate_bracket(selected_model=None, use_round_weight=True, name="bracket"):
+def generate_bracket(selected_model=None, use_round_weight=True, name="bracket", hyperparam=None):
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
 
@@ -38,7 +38,8 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
     file_handler.setFormatter(log_format)
     console_handler.setFormatter(log_format)
 
-    # Add handlers to the logger
+    # Add handlers to the logger (clear first to avoid duplicates on repeated calls)
+    logger.handlers.clear()
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
     # training data: 2022-2025 tournaments
@@ -58,14 +59,15 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
     final_test = pd.read_csv(template, index_col=0)
     final_test['Round Score'] = final_test['Round'].map(values)
 
-    # create models on an 70-15-15 split of training data, select the best performing predictor to use on 2023 data
+    # create models on an 70-15-15 split of training data, select the best performing predictor to use on 2026 data
     from sklearn.linear_model import Lasso
     from sklearn.neighbors import KNeighborsRegressor
     from sklearn.tree import DecisionTreeRegressor
     from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
     from sklearn.model_selection import train_test_split
     from sklearn.multioutput import MultiOutputRegressor
-
+    from sklearn.neural_network import MLPRegressor
+    
     kscore = 0
     kn_params = [2, 3, 4, 5, 6]
     kn_best = None
@@ -81,7 +83,9 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
     xscore = 0
     xg_params = [0.025, 0.05, 0.1, 0.2, 0.4]
     xg_best = None
-    xscore = 0
+    mscore = 0
+    mlp_params = [0.001, 0.005, 0.01, 0.05, 0.1]
+    mlp_best = None
 
     x_vars = ['Round Score', 'Seed 1', 'Seed 2', 'TO 1', 'TO 2', 'Offense 1', 'Offense 2', 'Defense 1', 'Defense 2', 'Win Pct 1', 'Win Pct 2', '3P 1', '3P 2']
     y_vars = ['Score 1', 'Score 2']
@@ -99,7 +103,7 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
         # Test for Edey - does unweighting the rounds allow for more upsets
         #values = {'First Four': 1, 'R1': 1, 'R2': 1, 'Sweet 16': 1, 'Elite 8': 1, 'Final 4': 1, 'Championship': 1}
 
-        if selected_model in (None, "KNeighbors"):
+        if selected_model is None or (selected_model == "KNeighbors" and hyperparam is None):
             kn = KNeighborsRegressor(n_neighbors=kn_params[par])
             train_x = ft_train_x.drop('Round', axis=1)
             # print NaN values in train_x
@@ -141,7 +145,7 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
             if kn_best == None or knscore > kn_best[1]:
                 kn_best = (kn_params[par], knscore)
 
-        if selected_model in (None, "Decision Tree"):
+        if selected_model is None or (selected_model == "Decision Tree" and hyperparam is None):
             dt = DecisionTreeRegressor(min_samples_split=dt_params[par])
             train_x = ft_train_x.drop('Round', axis=1)
             # train_x = ft_train_x
@@ -182,7 +186,7 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
             if dt_best == None or dtscore > dt_best[1]:
                 dt_best = (dt_params[par], dtscore)
         
-        if selected_model in (None, "Lasso"):
+        if selected_model is None or (selected_model == "Lasso" and hyperparam is None):
             la = Lasso(alpha = la_params[par])
             train_x = ft_train_x.drop('Round', axis=1)
             # train_x = ft_train_x
@@ -223,7 +227,7 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
             if la_best == None or lascore > la_best[1]:
                 la_best = (la_params[par], lascore)
 
-        if selected_model in (None, "Random Forest"):
+        if selected_model is None or (selected_model == "Random Forest" and hyperparam is None):
             rf = RandomForestRegressor(min_samples_split=rf_params[par])
             train_x = ft_train_x.drop('Round', axis=1)
             # train_x = ft_train_x
@@ -262,7 +266,7 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
             if rf_best == None or rfscore > rf_best[1]:
                 rf_best = (rf_params[par], rfscore)
 
-        if selected_model in (None, "XGBoost"):
+        if selected_model is None or (selected_model == "XGBoost" and hyperparam is None):
             xg = MultiOutputRegressor(GradientBoostingRegressor(learning_rate=xg_params[par]))
             train_x = ft_train_x.drop('Round', axis=1)
             # train_x = ft_train_x
@@ -301,6 +305,46 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
             if xg_best == None or xgscore > xg_best[1]:
                 xg_best = (xg_params[par], xgscore)
 
+        if selected_model is None or (selected_model == "MLP" and hyperparam is None):
+            mlp = MLPRegressor(random_state=1, max_iter=100, tol=mlp_params[par])
+            
+            train_x = ft_train_x.drop('Round', axis=1)
+            # train_x = ft_train_x
+            mlp.fit(train_x, ft_train_y)
+
+            mlp_correct = 0
+            mlp_game_value = 0
+            for i in range(len(ft_test_x)):
+                data = np.asarray(ft_test_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = mlp.predict([data[0][1:]])[0]
+                res = ft_test_y.iloc[i].values
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    mlp_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    mlp_correct += rv
+                mlp_game_value += rv
+            #print("Random Forest Regressor accuracy: ", float(rf_correct / rf_game_value))
+            mscore += float(mlp_correct / mlp_game_value)
+
+            mlpv_correct = 0
+            mlpv_game_value = 0
+            for i in range(len(ft_val_x)):
+                data = np.asarray(ft_val_x.iloc[i]).reshape(1, -1)
+                round = data[0][0]
+                rv = values[round]
+                pred = mlp.predict([data[0][1:]])[0]
+                res = ft_val_y.iloc[i].values
+                if pred[0] < pred[1] and res[0] < res[1]:
+                    mlpv_correct += rv
+                elif pred[0] >= pred[1] and res[0] >= res[1]:
+                    mlpv_correct += rv
+                mlpv_game_value += rv
+            mlpscore = float(mlpv_correct / mlpv_game_value)
+            if mlp_best == None or mlpscore > mlp_best[1]:
+                mlp_best = (mlp_params[par], mlpscore)
+
     if selected_model in (None, "KNeighbors"):
         logger.info(f"K Neighbors Regressor average accuracy: {float(kscore/5)}")
     if selected_model in (None, "Decision Tree"):
@@ -311,6 +355,9 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
         logger.info(f"Random Forest average accuracy: {float(rscore/5)}")
     if selected_model in (None, "XGBoost"):
         logger.info(f"XGBoost average accuracy: {float(xscore/5)}")
+    if selected_model in (None, "MLP"):
+        logger.info(f"MLP average accuracy: {float(mscore/5)}")
+
 
     model_map = {
         "Random Forest": (RandomForestRegressor, rf_best, lambda p: {"min_samples_split": p}),
@@ -318,18 +365,23 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
         "Lasso": (Lasso, la_best, lambda p: {"alpha": p}),
         "Decision Tree": (DecisionTreeRegressor, dt_best, lambda p: {"min_samples_split": p}),
         "XGBoost": (None, xg_best, lambda p: {"learning_rate": p}),
+        "MLP": (MLPRegressor, mlp_best, lambda p: {"tol": p, "random_state": 1, "max_iter": 100}),
     }
 
     if selected_model in model_map:
         cls, best, kwargs_fn = model_map[selected_model]
-        if selected_model == "XGBoost":
-            model = MultiOutputRegressor(GradientBoostingRegressor(**kwargs_fn(xg_best[0])))
+        param = hyperparam if hyperparam is not None else best[0]
+        if hyperparam is not None:
+            logger.info(f"Using {selected_model} with provided hyperparam: {hyperparam}")
         else:
-            model = cls(**kwargs_fn(best[0]))
-        logger.info(f"Using {selected_model} with params: {best}")
+            logger.info(f"Using {selected_model} with tuned params: {best}")
+        if selected_model == "XGBoost":
+            model = MultiOutputRegressor(GradientBoostingRegressor(**kwargs_fn(param)))
+        else:
+            model = cls(**kwargs_fn(param))
     else:
         # auto-select best from all trained models
-        best_score = max(dscore, kscore, rscore, ascore, xscore)
+        best_score = max(dscore, kscore, rscore, ascore, xscore, mscore)
         if best_score == rscore:
             model = RandomForestRegressor(min_samples_split=rf_best[0])
             logger.info(f"Auto-selected Random Forest with params: {rf_best}")
@@ -342,6 +394,9 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
         elif best_score == dscore:
             model = DecisionTreeRegressor(min_samples_split=dt_best[0])
             logger.info(f"Auto-selected Decision Tree with params: {dt_best}")
+        elif best_score == mscore:
+            model = MLPRegressor(random_state=1, max_iter=1000, tol=mlp_best[0])
+            logger.info(f"Auto-selected MLP with params: {mlp_best}")
         else:
             model = MultiOutputRegressor(GradientBoostingRegressor(learning_rate=xg_best[0]))
             logger.info(f"Auto-selected XGBoost with params: {xg_best}")
@@ -930,8 +985,10 @@ def generate_bracket(selected_model=None, use_round_weight=True, name="bracket")
 
     #export results as bytes for download
     output = io.BytesIO()
+    bracket.drop(columns=['Round Score', 'Wins 1', 'Wins 2'], inplace=True)
     bracket.to_excel(output, index=True)
     output.seek(0)
+    logger.info("Bracket generation complete.")
     return output
 
 if __name__ == "__main__":
